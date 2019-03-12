@@ -1,0 +1,138 @@
+﻿/*
+ ------------------------------------------------------------
+  StyleSheet.css - basic styles for Asp.net core MVC application
+  ver 1.0
+  Yilin Ren, CSE686 - Internet Programming, Spring 2019
+  Based on Jim Fawcett
+ ------------------------------------------------------------
+*/
+body {
+  margin: 2em 2em;
+  font-family: Tahoma;
+}
+
+table, tr, td {
+    border-bottom: 1px solid #0f0a3c;
+    border-collapse: collapse;
+}
+td { padding: 0.5em 1.5em; }
+
+topic-block {
+  display: block;
+  border: 2px solid maroon;
+  padding: 0.5em 1.25em 1.0em 1.25em;
+  box-shadow: #dddddd 10px 10px 10px;
+}
+
+.indent {
+  margin-left: 25px; margin-right: 25px;
+}
+
+.tight {
+  display: table-cell;
+}
+spacer-5 {
+  display: block;
+  height: 10px;
+}
+spacer-10 {
+  display: block;
+  height: 10px;
+}
+spacer-15 {
+  display: block;
+  height: 10px;
+}
+spacer-25 {
+  display: block;
+  height: 10px;
+}
+
+.topnav {
+    position: fixed;
+    background-color: #1eafed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.topnav a {
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ffcd60;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+footer {
+    display: block;
+    position: fixed;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    font-family: Consolas;
+    font-weight: bold;
+    font-size: 1.5em;
+    background-color: #1eafed;
+    color: white;
+    text-align: center;
+    padding: 0.25em;
+    height: 2em;
+    align-content: center;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+}
+.main {
+    margin: 70px 0 0 0;
+    font-family: Tahoma;
+}
+
+dt {
+    float: left;
+    width: 6%;
+    text-align: left;
+    padding: .25em;
+    clear: left;
+    font-weight: bold;
+}
+
+dd {
+    float: left;
+    width: 60%;
+    padding: .25em 0;
+}
+
+dl:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+input {
+    height: 20px;
+    width: 400px;
+    font-size: 15px;
+    
+    border: 1px solid #999;
+    border-radius: 1px;
+    -webkit-appearance: none;
+}
+
+input[type=submit]{
+    height: 30px;
+    width: 100px;
+    margin-left: 400px;
+    font-weight: bolder;
+    cursor: pointer;
+}

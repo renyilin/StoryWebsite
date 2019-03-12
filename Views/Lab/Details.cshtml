@@ -1,0 +1,44 @@
+﻿@model MvcSkeleton.Models.Lab;
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Lab Details</h2>
+
+<div>
+    <h4>Lab #@Model.number @Model.topic</h4>
+    <hr/>
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.id)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.number)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.number)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.topic)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.topic)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.target)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.target)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.due)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.due.Date)
+        </dd>
+    </dl>
+</div>

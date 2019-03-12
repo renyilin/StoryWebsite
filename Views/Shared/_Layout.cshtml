@@ -1,0 +1,32 @@
+﻿<!-- statement below required to use Razor TagHelpers -->
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+<!DOCTYPE html>
+
+
+<!--
+  _Layout.cshtml - View to supply HTML used on all pages, uses razor syntax
+  ver 1.0
+  Jim Fawcett, CSE686 - Internet Programming, Spring 2019
+-->
+
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/CSS/StyleSheet.css" />
+</head>
+<body>
+    <div class="topnav">
+        <a asp-controller="lab" asp-action="index">Home</a>
+        <a asp-controller="lab" asp-action="labs">Labs</a>
+        <a asp-controller="lab" asp-action="about">About</a>
+    </div>
+    <div class="main">
+        @RenderBody()
+    </div>
+    <footer>
+        CSE686  Lab #7
+    </footer>
+</body>
+</html>

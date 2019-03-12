@@ -1,0 +1,34 @@
+﻿@model List<MvcSkeleton.Models.Lab>
+<!-- statement below required to use Razor TagHelpers -->
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@{
+    ViewBag.Title = "Labs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Labs</h2>
+
+<hr/>
+<div class="indent">
+    <p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <tbody>
+            @foreach (var lab in Model)
+            {
+                <tr>
+                    <td>
+                       Lab #@lab.number. @lab.topic
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = lab.id  }) |
+                        @Html.ActionLink("Details", "Details", new { id = lab.id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = lab.id })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

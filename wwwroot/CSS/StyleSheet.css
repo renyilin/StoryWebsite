@@ -6,10 +6,6 @@
   Based on Jim Fawcett
  ------------------------------------------------------------
 */
-body {
-  margin: 2em 2em;
-  font-family: Tahoma;
-}
 
 table, tr, td {
     border-bottom: 1px solid #0f0a3c;
@@ -57,7 +53,7 @@ spacer-25 {
     overflow: hidden;
 }
 
-.topnav a {
+.nav-btn, .logo {
     float: left;
     color: white;
     text-align: center;
@@ -66,15 +62,28 @@ spacer-25 {
     font-size: 17px;
 }
 
-.topnav a:hover {
-    background-color: #ffcd60;
-    color: black;
+.logo {
+    padding: 9px 10px 9px 20px;
+    font-family: 'Margarine', cursive;
+    font-size: 22px;
+    color: #f1f1f1;
 }
 
-.topnav a.active {
-    background-color: #4CAF50;
+.logo:hover {
     color: white;
 }
+
+
+.nav-btn:hover {
+        background-color: #ffcd60;
+        color: black;
+        cursor:pointer;
+}
+
+.nav-btn.active {
+        background-color: #4CAF50;
+        color: white;
+    }
 
 footer {
     display: block;
@@ -93,24 +102,32 @@ footer {
     align-content: center;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
+
+body {
+    background-color: #f1f1f1;
+    padding: 20px;
+    font-family: Arial;
+}
+
 .main {
-    margin: 70px 0 0 0;
-    font-family: Tahoma;
+    margin: 50px 0 0 0;
+    font-family: "Helvetica Neue", sans-serif;
 }
 
 dt {
     float: left;
-    width: 6%;
+    width: 15%;
     text-align: left;
-    padding: .25em;
+    padding: 0.25em;
     clear: left;
     font-weight: bold;
 }
 
 dd {
     float: left;
-    width: 60%;
+    width: 75%;
     padding: .25em 0;
+    font-family: "Helvetica Neue", sans-serif;
 }
 
 dl:after {
@@ -135,4 +152,94 @@ input[type=submit]{
     margin-left: 400px;
     font-weight: bolder;
     cursor: pointer;
+}
+
+.gallery {
+    margin: 10px 20px 10px 20px;
+    border: 1px solid #f1f1f1;
+    float: left;
+    width: 280px;
+    height: 320px;
+    cursor: pointer;
+    background-color: white;
+    /*box-shadow: 0px 1px 3px rgba(0,0,0,0);*/
+}
+
+.gallery:hover {
+    border: 1px solid #777;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.5);
+}
+
+.gallery img {
+    width: 280px;
+    height: 240px;
+    object-fit: cover;
+
+}
+
+.gallery-title {
+    line-height: 1.4;
+    font-size: 1.125em;
+    font-weight: bold;
+    font-style: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.gallery-desc {
+    font-style: italic;
+    position: relative;
+    font-size: 0.875em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /*white-space: nowrap;*/
+    line-height: 1.4em; /* fallback */
+    max-height: 2.8em; /* fallback */
+    -webkit-line-clamp: 2; /* number of lines to show */
+    -webkit-box-orient: vertical;
+}
+
+.fade {
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.figure-caption {
+    padding: 0 10px 5px 10px;
+    color: #003e54;
+    font-family: "ClearSans", "HelveticaNeue-Bold", "Helvetica Neue Bold", sans-serif;
+    text-align: left;
+
+}
+
+.gallery-ctg {
+    font-family: "ClearSans", "HelveticaNeue-Bold", "Helvetica Neue Bold", sans-serif;
+    font-weight: bold;
+    font-size: 23px;
+    margin-left: 20px;
+    color: #929aab;
+
+}
+
+.img-disp {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 40%;
+    max-width: 400px;
+}
+
+.detail-info {
+    font-family: "ClearSans", "HelveticaNeue-Bold", "Helvetica Neue Bold", sans-serif;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.detail-title {
+    color: #003e54;
+    font-size: 1.2em;
+    margin: 30px 0 0 0;
 }

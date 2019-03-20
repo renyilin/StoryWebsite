@@ -1,8 +1,22 @@
 ﻿@model StoryWebsite.ViewModels.StoryIndexViewModel;
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>@Model.title</h1>
+<div class="gallery-ctg">Newest</div>
+@foreach (var story in Model.StoryCollection)
+{
+    <a asp-controller="story" asp-action="details" asp-route-id ="@story.stroyID">
+        <div class="gallery fade">
+            <img src="@Href(story.url)" alt="@story.title">
+            <div class="figure-caption">
+                <div class="gallery-title">@story.title</div>
+                <div class="gallery-desc">@story.content</div>
+            </div>
+        </div>
+    </a>
+}
 

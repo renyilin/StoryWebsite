@@ -7,6 +7,25 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Pictures\**" />
+    <Content Remove="wwwroot\Pictures\**" />
+    <EmbeddedResource Remove="wwwroot\Pictures\**" />
+    <None Remove="wwwroot\Pictures\**" />
+    <Compile Remove="Controllers\LabController.cs" />
+    <Compile Remove="Migrations\20190312160212_Initial Migration.Designer.cs" />
+    <Compile Remove="Migrations\20190312160212_Initial Migration.cs" />
+    <Compile Remove="Migrations\StoryWebsiteDbContextModelSnapshot.cs" />
+    <Compile Remove="Models\Lab.cs" />
+    <Compile Remove="Models\LabList.cs" />
+    <Content Remove="Views\Lab\About.cshtml" />
+    <Content Remove="Views\Lab\abc.cshtml" />
+    <Content Remove="Views\Lab\Edit.cshtml" />
+    <Content Remove="Views\Lab\Index.cshtml" />
+    <Content Remove="Views\Lab\Labs.cshtml" />
+    <Content Remove="Views\Story\About.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.3" />
@@ -15,11 +34,11 @@
   <ItemGroup>
     <None Include="wwwroot\JS\JavaScript.js" />
     <None Include="wwwroot\CSS\StyleSheet.css" />
+    <None Include="Views\Story\About.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\Pictures\" />
-    <Folder Include="Views\Lab\" />
+    <Folder Include="wwwroot\img\" />
   </ItemGroup>
 
   <ItemGroup>

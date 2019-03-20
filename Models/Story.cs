@@ -11,24 +11,30 @@ namespace StoryWebsite.Models
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Title")]
         public string title { get; set; }
 
         [Required]
+        [Display(Name = "Description")]
         public string content { get; set; }
+
         public string url { get; set; }
 
         [Required]
+        [Display(Name = "Category")]
         public Category category { get; set; }
 
-        //[Required]
-        //public DateTime createTime{ get; set; }
+        [Required]
+        [Display(Name = "Create Time")]
+        public DateTime createTime{ get; set; }
 
-        //public DateTime updateTime { get; set; }
+        public DateTime updateTime { get; set; }
 
-        //[Required]
-        //public bool status { get; set; } // 0: private; 1: public.
+        [Required]
+        public bool status { get; set; } // 0: private; 1: public.
 
-        //[Required]
-        //public int userID { get; set; }
+        [Required]
+        [Display(Name = "Author")]
+        public User author { get; set; }
     }
 }

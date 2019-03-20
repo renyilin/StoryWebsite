@@ -1,0 +1,45 @@
+﻿@model StoryWebsite.Models.Story;
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <img src="@Href(Model.url)" alt="@Model.title" class="img-disp">
+    <div class="detail-info">
+        <div class= "detail-title">@Model.title</div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.author)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.author.userName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.category)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.category.categoryName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.content)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.content)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.category)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.category.categoryName)
+            </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.createTime)
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.createTime.Date)
+            </dd>
+        </dl>
+
+    </div>

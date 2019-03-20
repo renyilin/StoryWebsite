@@ -14,19 +14,19 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" href="~/CSS/StyleSheet.css" />
+    <link rel="stylesheet" href="@Href("~/CSS/StyleSheet.css")" />
+    <link href="https://fonts.googleapis.com/css?family=Margarine" rel="stylesheet">
 </head>
 <body>
     <div class="topnav">
-        <a asp-controller="lab" asp-action="index">Home</a>
-        <a asp-controller="lab" asp-action="labs">Labs</a>
-        <a asp-controller="lab" asp-action="about">About</a>
+        <a asp-controller="story" asp-action="index" class = "logo fade">StoryShare</a>
+        <a asp-controller="story" asp-action="about" class = "nav-btn">About</a>
     </div>
     <div class="main">
         @RenderBody()
     </div>
-    <footer>
-        CSE686  Lab #7
-    </footer>
+    @*<footer>
+        CSE686  Lab #8
+    </footer>*@
 </body>
 </html>

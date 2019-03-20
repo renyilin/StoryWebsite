@@ -14,9 +14,10 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using MvcSkeleton.Models;
+//using StoryWebsite.Models
 using Microsoft.Extensions.Configuration;
 using StoryWebsite.Models;
+using StoryWebsite.Services;
 
 namespace StoryWebsite
 {
@@ -33,9 +34,8 @@ namespace StoryWebsite
 
     public void ConfigureServices(IServiceCollection services)
     {
+      services.AddScoped<IStory, MockDataService>();
       services.AddMvc();
-      services.AddDbContext<StoryWebsiteDbContext>(options => 
-         options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

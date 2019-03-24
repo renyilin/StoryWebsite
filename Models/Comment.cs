@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StoryWebsite.Models
@@ -17,10 +18,10 @@ namespace StoryWebsite.Models
         public DateTime postTime{ get; set; }
 
         [Required]
-        public bool status { get; set; } //1: allowed to show; 0: not allowed;.
+        public bool status { get; set; } //true: allowed to show; false: not allowed;.
 
         [Required]
-        public int userID { get; set; }
+        public User author { get; set; }
 
         [Required]
         public int storyID { get; set; }

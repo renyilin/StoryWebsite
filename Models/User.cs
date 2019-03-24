@@ -20,5 +20,7 @@ namespace StoryWebsite.Models
         [Required]
         [StringLength(50)]
         public string email { get; set; }
+
+        public string avatarURL { get; set; }
     }
 }

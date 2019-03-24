@@ -12,22 +12,87 @@ namespace StoryWebsite.Models
 
         private StoryList()
         {
+
+            //----< Users >-----------------
             User user0 = new User()
             {
-                userID = 1,
+                userID = 0,
                 userName = "Yilin Ren",
                 password = "cxmnbxzmnkh",
-                email = "yren20@syr.edu"
+                email = "yren20@syr.edu",
+                avatarURL = "https://lucidchart.zendesk.com/system/photos/8933/3314/profile_image_678269360_201415.png"
             };
 
             User user1 = new User()
             {
-                userID = 2,
+                userID = 1,
                 userName = "Jean van der Meulen",
                 password = "a12mnsdfsafsa",
-                email = "jvsm@gmail.com"
+                email = "jvsm@gmail.com",
+                avatarURL = "https://lucidchart.zendesk.com/system/photos/0003/5071/8906/profile_image_252411440_201415.png"
             };
 
+            User user2 = new User()
+            {
+                userID = 2,
+                userName = "Ben",
+                password = "cafvavasv",
+                email = "ben12@gmail.com",
+                avatarURL = "https://lucidchart.zendesk.com/system/photos/0003/1037/4046/profile_image_4656145546_201415.png"
+            };
+
+            //----< Comments >-----------------
+            Comment comment0 = new Comment()
+            {
+                commentID = 0,
+                content = "Great. Thank you!",
+                postTime = new DateTime(2019, 2, 6),
+                status = true,
+                author = user0,
+                storyID = 0
+            };
+
+            Comment comment1 = new Comment()
+            {
+                commentID = 1,
+                content = "Thanks for sharing. I love your story.",
+                postTime = new DateTime(2019, 3, 6),
+                status = true,
+                author = user2,
+                storyID = 0
+            };
+
+            Comment comment2 = new Comment()
+            {
+                commentID = 2,
+                content = "Fantastic! These are great photos.",
+                postTime = new DateTime(2019, 2, 6),
+                status = true,
+                author = user0,
+                storyID = 1
+            };
+
+            Comment comment3 = new Comment()
+            {
+                commentID = 3,
+                content = "That's a nice place. I hope I can go there in the future.",
+                postTime = new DateTime(2019, 3, 6),
+                status = true,
+                author = user1,
+                storyID = 1
+            };
+
+            Comment comment4 = new Comment()
+            {
+                commentID = 4,
+                content = "What a beautiful duck!",
+                postTime = new DateTime(2019, 3, 6),
+                status = true,
+                author = user2,
+                storyID = 2
+            };
+
+            //----< Categories >-----------------
             Category ctg0 = new Category()
             {
                 categoryID = 1,
@@ -40,6 +105,7 @@ namespace StoryWebsite.Models
                 categoryName = "Animal"
             };
 
+            //----< Stories >-----------------
             Story Story = new Story()
             {
                 stroyID = 0,
@@ -51,8 +117,11 @@ namespace StoryWebsite.Models
                 updateTime = new DateTime(2019, 2, 6),
                 author = user0,
                 status = true,
-                category = ctg0
-
+                category = ctg0,
+                comments = new List<Comment>(){ 
+                            comment0,
+                            comment1
+                        }
             };
             storys.Add(Story);
 
@@ -67,7 +136,11 @@ namespace StoryWebsite.Models
                 updateTime = new DateTime(2019, 2, 6),
                 author = user1,
                 status = true,
-                category = ctg0
+                category = ctg0,
+                comments = new List<Comment>(){
+                            comment2,
+                            comment3
+                        }
             };
             storys.Add(Story);
 
@@ -81,7 +154,10 @@ namespace StoryWebsite.Models
                 updateTime = new DateTime(2019, 6, 3),
                 author = user1,
                 status = true,
-                category = ctg1
+                category = ctg1,
+                comments = new List<Comment>(){
+                            comment4
+                        }
             };
             storys.Add(Story);
 

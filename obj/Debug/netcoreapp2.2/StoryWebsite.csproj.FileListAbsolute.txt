@@ -56,3 +56,6 @@ Z:/Documents/Course/CSE686_IP/MyFinalProject/StoryWebsite/obj/Debug/netcoreapp2.
 /Users/ryl/Documents/Course/CSE686_IP/Lab/Lab9/StoryWebsite/obj/Debug/netcoreapp2.2/StoryWebsite.csproj.CopyComplete
 /Users/ryl/Documents/Course/CSE686_IP/Lab/Lab9/StoryWebsite/obj/Debug/netcoreapp2.2/StoryWebsite.csprojAssemblyReference.cache
 /Users/ryl/Documents/Course/CSE686_IP/Lab/Lab9/StoryWebsite/obj/Debug/netcoreapp2.2/Razor/Views/Story/Details.g.cshtml.cs
+/Users/ryl/Documents/Course/CSE686_IP/Lab/Lab9/StoryWebsite/obj/Debug/netcoreapp2.2/Razor/Views/Story/Create.g.cshtml.cs
+/Users/ryl/Documents/Course/CSE686_IP/Lab/Lab9/StoryWebsite/obj/Debug/netcoreapp2.2/Razor/Views/_ViewImports.g.cshtml.cs
+/Users/ryl/Documents/Course/CSE686_IP/Lab/Lab9/StoryWebsite/obj/Debug/netcoreapp2.2/Razor/Views/_ViewStart.g.cshtml.cs

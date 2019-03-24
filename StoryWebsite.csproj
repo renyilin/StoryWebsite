@@ -23,6 +23,7 @@
     <Content Remove="Views\Lab\Index.cshtml" />
     <Content Remove="Views\Lab\Labs.cshtml" />
     <Content Remove="Views\Story\About.cshtml" />
+    <Content Remove="Views\Story\CreateA.cshtml" />
   </ItemGroup>
 
   <ItemGroup>

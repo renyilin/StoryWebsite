@@ -27,5 +27,11 @@ namespace StoryWebsite.Services
             return storyList[id];
         }
 
+        public void add(Story story)
+        {
+            StoryList storyList = StoryList.getInstance();
+            storyList.add(story);
+        }
+
     }
 }

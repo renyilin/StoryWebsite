@@ -14,6 +14,12 @@ namespace StoryWebsite.Services
         {
             _ctx = ctx;
         }
+
+        public void add(Story story)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Story> getAll()
         {
             return _ctx.storys.Include(story => story.category);

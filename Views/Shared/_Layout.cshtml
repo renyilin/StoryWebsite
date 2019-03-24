@@ -15,11 +15,12 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="@Href("~/CSS/StyleSheet.css")" />
-    <link href="https://fonts.googleapis.com/css?family=Margarine" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Margarine|Roboto" rel="stylesheet">
 </head>
 <body>
     <div class="topnav">
-        <a asp-controller="story" asp-action="index" class = "logo fade">StoryShare</a>
+        <a asp-controller="story" asp-action="index" class = "logo">StoryShare</a>
+        <a asp-controller="story" asp-action="create" class="nav-btn">Create</a>
         <a asp-controller="story" asp-action="about" class = "nav-btn">About</a>
     </div>
     <div class="main">

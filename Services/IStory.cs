@@ -11,6 +11,7 @@ namespace StoryWebsite.Services
         IEnumerable<Story> getAll();
         IEnumerable<Story> getByCategory(Category ctg);
         Story getById(int id);
+        void add(Story story);
         
 
     }

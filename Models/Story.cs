@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace StoryWebsite.Models
@@ -25,7 +26,7 @@ namespace StoryWebsite.Models
         public Category category { get; set; }
 
         [Required]
-        [Display(Name = "Create Time")]
+        [Display(Name = "Create Date")]
         public DateTime createTime{ get; set; }
 
         public DateTime updateTime { get; set; }
@@ -36,5 +37,7 @@ namespace StoryWebsite.Models
         [Required]
         [Display(Name = "Author")]
         public User author { get; set; }
+
+        public IEnumerable<Comment> comments { get; set; }
     }
 }

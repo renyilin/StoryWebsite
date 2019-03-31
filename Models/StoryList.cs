@@ -49,7 +49,7 @@ namespace StoryWebsite.Models
                 postTime = new DateTime(2019, 2, 6),
                 status = true,
                 author = user0,
-                storyID = 0
+                //storyID = 0
             };
 
             Comment comment1 = new Comment()
@@ -59,7 +59,7 @@ namespace StoryWebsite.Models
                 postTime = new DateTime(2019, 3, 6),
                 status = true,
                 author = user2,
-                storyID = 0
+                //storyID = 0
             };
 
             Comment comment2 = new Comment()
@@ -69,7 +69,7 @@ namespace StoryWebsite.Models
                 postTime = new DateTime(2019, 2, 6),
                 status = true,
                 author = user0,
-                storyID = 1
+                //storyID = 1
             };
 
             Comment comment3 = new Comment()
@@ -79,7 +79,7 @@ namespace StoryWebsite.Models
                 postTime = new DateTime(2019, 3, 6),
                 status = true,
                 author = user1,
-                storyID = 1
+                //storyID = 1
             };
 
             Comment comment4 = new Comment()
@@ -89,7 +89,7 @@ namespace StoryWebsite.Models
                 postTime = new DateTime(2019, 3, 6),
                 status = true,
                 author = user2,
-                storyID = 2
+                //storyID = 2
             };
 
             //----< Categories >-----------------
@@ -108,7 +108,7 @@ namespace StoryWebsite.Models
             //----< Stories >-----------------
             Story Story = new Story()
             {
-                stroyID = 0,
+                storyID = 0,
                 title = "Skating",
                 content = "Skateboarding is an action sport which involves riding and performing tricks using a skateboard, " +
         "as well as a recreational activity, an art form, an entertainment industry job, and a method of transportation. --- Wikipedia",
@@ -127,7 +127,7 @@ namespace StoryWebsite.Models
 
             Story = new Story()
             {
-                stroyID = 1,
+                storyID = 1,
                 title = "Person Horseback Riding Outdoors",
                 content = "Today I went riding horse with friends in mcgraw NY. " +
                 	"It was the best time of my life and we are going to make it a weekly thing. ",
@@ -146,7 +146,7 @@ namespace StoryWebsite.Models
 
             Story = new Story()
             {
-                stroyID = 2,
+                storyID = 2,
                 title = "Mandarin Duck",
                 content = "The mandarin, widely regarded as the world's most beautiful duck, is a native of China and Japan.",
                 url = "https://nationalzoo.si.edu/scbi/migratorybirds/featured_photo/images/bigpic/mndu24.jpg",

@@ -8,12 +8,19 @@ namespace StoryWebsite.Models
 {
     public class StoryWebsiteDbContext: DbContext
     {
-        public StoryWebsiteDbContext(DbContextOptions options) : base(options)
+        public StoryWebsiteDbContext()
+        {
+        }
+
+        public StoryWebsiteDbContext(DbContextOptions<StoryWebsiteDbContext> options) : base(options)
         {
 
         }
 
-        public DbSet<Story> storys { get; set; }
+        public DbSet<Story> stories { get; set; }
         public DbSet<Category> categories { get; set; }
+        public DbSet<Comment> comments { get; set; }
+        public DbSet<User> users { get; set; }
+
     }
 }

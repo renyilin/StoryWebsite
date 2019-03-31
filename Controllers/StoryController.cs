@@ -52,7 +52,7 @@ namespace StoryWebsite.Controllers
         {
             var storys = _storyService.getAll();
             story.createTime = DateTime.Now;
-            story.stroyID = storys.Count();
+            story.storyID = storys.Count();
             _storyService.add(story);
             return RedirectToAction("index");
         }
@@ -73,6 +73,14 @@ namespace StoryWebsite.Controllers
             }
             return Ok();
         }
+
+        [HttpPost]
+        public IActionResult AddComment(int id, Comment obj)
+        {
+
+            return RedirectToAction("details", new {id = id});
+        }
+
 
         public IActionResult About()
         {

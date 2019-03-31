@@ -7,7 +7,7 @@
 <div class="gallery-ctg">Newest</div>
 @foreach (var story in Model.StoryCollection)
 {
-    <a asp-controller="story" asp-action="details" asp-route-id ="@story.stroyID">
+    <a asp-controller="story" asp-action="details" asp-route-id ="@story.storyID">
         <div class="gallery">
             <img src="@Href(story.url)" alt="@story.title">
             <div class="figure-caption">

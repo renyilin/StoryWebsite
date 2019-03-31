@@ -22,7 +22,7 @@ namespace StoryWebsite.Services
 
         public IEnumerable<Story> getAll()
         {
-            return _ctx.storys.Include(story => story.category);
+            return _ctx.stories.Include(story => story.category);
         }
 
         public IEnumerable<Story> getByCategory(Category ctg)
@@ -32,7 +32,7 @@ namespace StoryWebsite.Services
 
         public Story getById(int id)
         {
-            return _ctx.storys.Find(id);
+            return _ctx.stories.Find(id);
         }
 
     }

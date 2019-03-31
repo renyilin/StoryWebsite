@@ -23,7 +23,6 @@ namespace StoryWebsite.Models
         [Required]
         public User author { get; set; }
 
-        [Required]
-        public int storyID { get; set; }
+        public Story story { get; set; }
     }
 }

@@ -34,18 +34,24 @@ namespace StoryWebsite
 
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddScoped<IStory, MockDataService>();
+      services.AddScoped<IStory, StoryService>();
       services.AddMvc();
-    }
+
+      services.AddDbContext<StoryWebsiteDbContext>(options =>
+            options.UseSqlServer(
+        _configuration.GetConnectionString("DefaultConnection")));
+        }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
 
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env, StoryWebsiteDbContext dbcontext)
     {
       if (env.IsDevelopment())
       {
         app.UseDeveloperExceptionPage();
       }
+
+
 
       app.UseStaticFiles();  // needed to load css and js
 
@@ -57,8 +63,18 @@ namespace StoryWebsite
           template: "{Controller=Story}/{action=Index}/{id?}"
         );
       });
-            
-      //----< if we get here, there is a problem >---------------
+
+
+                //dbcontext.Database.EnsureCreated();
+
+                //var testBlog = dbcontext.categories.FirstOrDefault(b => b.categoryName == "People");
+                //if (testBlog == null)
+                //{
+                //    dbcontext.categories.Add(new Category { categoryName = "People" });
+                //}
+                //dbcontext.SaveChanges();
+
+            //----< if we get here, there is a problem >---------------
             app.Run(async (context) =>
       {
         await context.Response.WriteAsync("Server Error!");

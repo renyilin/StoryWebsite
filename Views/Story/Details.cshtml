@@ -47,6 +47,24 @@
         <div class="comment-title">Comments</div>
         <hr />
 
+        <div class="comment_editor">
+            <div class="comments-row">
+                <div class="avatar-column">
+                    <img alt="Avatar" src="@Href("https://secure.gravatar.com/avatar/6371f3ab23417a606e12cbef6fe97394?default=https%3A%2F%2Fassets.zendesk.com%2Fhc%2Fassets%2Fdefault_avatar.png&r=g")">
+                </div>
+                <div class="comment-column">
+                    <form asp-controller="story" asp-action="addcomment" method="post" id="usrform">
+                        <textarea rows="4" cols="50" name="content" form="usrform" placeholder="Type comment here..."></textarea>
+                        <input type="hidden" name="id" value="@Model.storyID" />
+                        <input type="hidden" name="author.userID" value="@Model.author.userID" />
+                        <input type="hidden" name="storyID" value="@Model.storyID" />
+                        <input type="submit" class="comment-btn" value="Comment">
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+        <hr />
         @foreach (var cm in Model.comments)
         {
             <div class="comments-row">
@@ -64,5 +82,6 @@
             <hr />
         }
     </div>
-</div>
+
+    </div>
 

@@ -8,7 +8,7 @@ namespace StoryWebsite.Models
     {
         [Required]
         [Key]
-        public int stroyID { get; set; }
+        public int storyID { get; set; }
 
         [Required]
         [StringLength(100)]

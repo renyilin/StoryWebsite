@@ -18,6 +18,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using StoryWebsite.Models;
 using StoryWebsite.Services;
+using StoryWebsite.Data;
 
 namespace StoryWebsite
 {
@@ -34,7 +35,7 @@ namespace StoryWebsite
 
     public void ConfigureServices(IServiceCollection services)
     {
-      services.AddScoped<IStory, StoryService>();
+      services.AddScoped<IStoryServer, StoryService>();
       services.AddMvc();
 
       services.AddDbContext<StoryWebsiteDbContext>(options =>
@@ -64,15 +65,7 @@ namespace StoryWebsite
         );
       });
 
-
-                //dbcontext.Database.EnsureCreated();
-
-                //var testBlog = dbcontext.categories.FirstOrDefault(b => b.categoryName == "People");
-                //if (testBlog == null)
-                //{
-                //    dbcontext.categories.Add(new Category { categoryName = "People" });
-                //}
-                //dbcontext.SaveChanges();
+      DummyData.Initialize(dbcontext);
 
             //----< if we get here, there is a problem >---------------
             app.Run(async (context) =>

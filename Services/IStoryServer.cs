@@ -6,13 +6,16 @@ using System.Threading.Tasks;
 
 namespace StoryWebsite.Services
 {
-    public interface IStory
+    public interface IStoryServer
     {
         IEnumerable<Story> getAll();
         IEnumerable<Story> getByCategory(Category ctg);
         Story getById(int id);
         void add(Story story);
-        
+        void addComment(int storyID, Comment cm);
+        void update();
+        void deleteStory(int storyID);
+
 
     }
 }

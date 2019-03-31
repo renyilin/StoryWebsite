@@ -10,7 +10,7 @@ using StoryWebsite.Models;
 namespace StoryWebsite.Migrations
 {
     [DbContext(typeof(StoryWebsiteDbContext))]
-    [Migration("20190331010927_Initial")]
+    [Migration("20190331033537_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,7 +103,8 @@ namespace StoryWebsite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("avatarURL");
+                    b.Property<string>("avatarURL")
+                        .IsRequired();
 
                     b.Property<string>("email")
                         .IsRequired()

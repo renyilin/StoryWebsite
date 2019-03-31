@@ -1,24 +1,22 @@
-﻿@model StoryWebsite.Models.Story;
-<!-- statement below required to use Razor TagHelpers -->
+﻿@model StoryWebsite.Models.Story
+
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Edit Story";
 }
 
-<h2>Create Story</h2>
+<h1>Edit Story</h1>
 
-<hr />
+<hr/>
+
 <div>
     <div>
-        <form asp-controller="story" asp-action="create" method="post">
+        <form asp-controller="story" asp-action="EditStory" method="post">
             <spacer-10></spacer-10>
+            <input type="hidden" asp-for="storyID" value="@Model.storyID" />
             <table>
                 <tr>
                     <td><label asp-for="title"></label></td>
                     <td><input asp-for="title" /></td>
-                </tr>
-                <tr>
-                    <td><label asp-for="author.userName"></label></td>
-                    <td><input asp-for="author.userName" /></td>
                 </tr>
                 <tr>
                     <td><label asp-for="content"></label></td>
@@ -35,17 +33,13 @@
             </table>
             <spacer-25></spacer-25>
             <div class="form-group">
-                <input type="submit" value="create" class="btn btn-default" />
+                <input type="submit" value="Edit" class="btn btn-green" />
             </div>
         </form>
-        @*<form method="post" enctype="multipart/form-data" asp-controller="story" asp-action="upload">
-            <div>
-                <p>Upload Image:</p>
-                <input type="file" name="files" accept=".jpg, .jpeg, .png"/>
-            </div>
-            <div>
-                <input type="submit" value="Upload" />
-            </div>
-        </form>*@
     </div>
 </div>
+
+<div>
+    <a asp-action="Details" asp-route-id="@Model.storyID">Back to Details</a>
+</div>
+

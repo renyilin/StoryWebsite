@@ -30,7 +30,7 @@ namespace StoryWebsite.Migrations
                     userName = table.Column<string>(maxLength: 30, nullable: false),
                     password = table.Column<string>(maxLength: 200, nullable: false),
                     email = table.Column<string>(maxLength: 50, nullable: false),
-                    avatarURL = table.Column<string>(nullable: true)
+                    avatarURL = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {

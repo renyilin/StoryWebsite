@@ -8,7 +8,7 @@ using StoryWebsite.Models;
 
 namespace StoryWebsite.Services
 {
-    public class MockDataService : IStory
+    public class MockDataService : IStoryServer
     {
         public IEnumerable<Story> getAll()
         {
@@ -33,5 +33,19 @@ namespace StoryWebsite.Services
             storyList.add(story);
         }
 
+        public void addComment(int storyID, Comment cm)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void update()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void deleteStory(int storyID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

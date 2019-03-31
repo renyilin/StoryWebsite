@@ -11,6 +11,7 @@ namespace StoryWebsite.Models
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "Category")]
         public string categoryName { get; set; }
     }
 }

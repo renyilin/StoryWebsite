@@ -88,3 +88,4 @@ Z:\Documents\Course\CSE686_IP\Lab\Lab9\StoryWebsite\obj\Debug\netcoreapp2.2\Stor
 Z:\Documents\Course\CSE686_IP\Lab\Lab9\StoryWebsite\obj\Debug\netcoreapp2.2\StoryWebsite.dll
 Z:\Documents\Course\CSE686_IP\Lab\Lab9\StoryWebsite\obj\Debug\netcoreapp2.2\StoryWebsite.pdb
 Z:\Documents\Course\CSE686_IP\Lab\Lab9\StoryWebsite\obj\Debug\netcoreapp2.2\StoryWebsite.csproj.CopyComplete
+Z:\Documents\Course\CSE686_IP\Lab\Lab9\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Views\Story\EditStory.g.cshtml.cs

@@ -13,9 +13,9 @@ namespace StoryWebsite.Controllers
 {
     public class StoryController : Controller
     {
-        private readonly IStory _storyService;
+        private readonly IStoryServer _storyService;
 
-        public StoryController(IStory storyService)
+        public StoryController(IStoryServer storyService)
         {
             _storyService = storyService;
         }
@@ -52,7 +52,12 @@ namespace StoryWebsite.Controllers
         {
             var storys = _storyService.getAll();
             story.createTime = DateTime.Now;
-            story.storyID = storys.Count();
+
+            //Temporary avatarURL & password
+            story.author.avatarURL = "https://lucidchart.zendesk.com/system/photos/8933/3314/profile_image_678269360_201415.png";
+            story.author.password = "admin12345";
+            story.author.email = "123@sina.com";
+
             _storyService.add(story);
             return RedirectToAction("index");
         }
@@ -75,10 +80,47 @@ namespace StoryWebsite.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddComment(int id, Comment obj)
+        public IActionResult AddComment(int id, Comment cm)
         {
+            var storys = _storyService.getAll();
+            var st = storys.FirstOrDefault(a => a.storyID == id);
+            cm.story = st;
+            cm.author = st.author;  //demo data  --> will be replaced by current user
+            cm.postTime = DateTime.Now;
 
+            _storyService.addComment(id, cm);
+
+            //var newComment = new Comment() {
+
+
+            //};
             return RedirectToAction("details", new {id = id});
+        }
+
+        [HttpGet]
+        public IActionResult EditStory(int storyID)
+        {
+            var story = _storyService.getById(storyID);
+            return View(story);
+        }
+
+        [HttpPost]
+        public IActionResult EditStory(Story story)
+        {
+            var newStory = _storyService.getById(story.storyID);
+            newStory.title = story.title;
+            newStory.url = story.url;
+            newStory.content = story.content;
+            newStory.category = story.category;
+            newStory.updateTime = DateTime.Now;
+            _storyService.update();
+
+            return RedirectToAction("details", new { id = newStory.storyID });
+        }
+
+        public IActionResult DeleteStory(int storyID) {
+            _storyService.deleteStory(storyID);
+            return RedirectToAction("Index");
         }
 
 

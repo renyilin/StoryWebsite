@@ -11,6 +11,7 @@ namespace StoryWebsite.Models
 
         [Required]
         [StringLength(30)]
+        [Display(Name = "Author Name")]
         public string userName { get; set; }
 
         [Required]
@@ -21,6 +22,7 @@ namespace StoryWebsite.Models
         [StringLength(50)]
         public string email { get; set; }
 
+        [Required]
         public string avatarURL { get; set; }
     }
 }

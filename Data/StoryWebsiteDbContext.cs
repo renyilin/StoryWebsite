@@ -17,6 +17,11 @@ namespace StoryWebsite.Models
 
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+        }
+
         public DbSet<Story> stories { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Comment> comments { get; set; }

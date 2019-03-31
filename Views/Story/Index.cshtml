@@ -4,6 +4,25 @@
     ViewData["Title"] = "Index";
 }
 
+<div class="description-block">
+    <p>
+        This is LAB#10 project which demonstrates Entity Framework based on my final project prototype.
+        This project would create four tables including stories, comments, users and categories.
+        The initial three story demos is created by DummyStory which adds these dummy data to SQL Server database when project is running.
+    </p>
+    <spacer-10></spacer-10>
+    <p>
+        In this project, you can click on stories to watch details. In detail view, you can comment on the stroy.
+        Click on edit button to edit it. Or click on delete button to delete this story.
+        In addtion, you can create new story through create button on the navbar.
+    </p>
+    <spacer-10></spacer-10>
+    <p>
+        Some of the data I used in this project is dummy data just for demonstration purpose, like name of the commenter.
+        I would revise them in the final project.
+    </p>
+</div>
+
 <div class="gallery-ctg">Newest</div>
 @foreach (var story in Model.StoryCollection)
 {

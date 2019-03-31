@@ -101,7 +101,8 @@ namespace StoryWebsite.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("avatarURL");
+                    b.Property<string>("avatarURL")
+                        .IsRequired();
 
                     b.Property<string>("email")
                         .IsRequired()

@@ -5,6 +5,10 @@
 }
 
 <img src="@Href(Model.url)" alt="@Model.title" class="img-disp">
+<div class="story-btns">
+    <a class = "btn btn-green width-150px" asp-controller="story" asp-action="EditStory" asp-route-storyID="@Model.storyID">Edit</a>
+    <a class = "btn btn-red width-150px" asp-controller="story" asp-action="DeleteStory" asp-route-storyID="@Model.storyID">Delete</a>
+</div>
 <div class="detail-info">
     <div class="story-info">
         <div class="detail-title">Story Info</div>
@@ -41,8 +45,16 @@
                 @*@Html.DisplayFor(model => model.createTime)*@
                 @Html.ValueFor(model => model.createTime, "{0:dd MMM yyyy}")
             </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.updateTime)
+            </dt>
+            <dd>
+                @*@Html.DisplayFor(model => model.createTime)*@
+                @Html.ValueFor(model => model.updateTime, "{0:dd MMM yyyy}")
+            </dd>
         </dl>
     </div>
+
     <div class="comments">
         <div class="comment-title">Comments</div>
         <hr />
@@ -83,5 +95,5 @@
         }
     </div>
 
-    </div>
+</div>
 

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace StoryWebsite.Services
 {
-    public class StoryService : IStory
+    public class StoryService : IStoryServer
     {
         private readonly StoryWebsiteDbContext _ctx;
         public StoryService(StoryWebsiteDbContext ctx)
@@ -17,12 +17,35 @@ namespace StoryWebsite.Services
 
         public void add(Story story)
         {
-            throw new NotImplementedException();
+            _ctx.stories.Add(story);
+            _ctx.SaveChanges();
         }
+
+        public void addComment(int storyID, Comment cm)
+        {
+            _ctx.stories.Find(storyID).comments.Append(cm);
+            _ctx.comments.Add(cm);
+            try
+            {
+                _ctx.SaveChanges();
+            }
+            catch (Exception)
+            {
+                // do nothing for now
+            }
+        }
+
+        public void update() {
+            _ctx.SaveChanges();
+        }
+
 
         public IEnumerable<Story> getAll()
         {
-            return _ctx.stories.Include(story => story.category);
+            return _ctx.stories.Include(story => story.category)
+                .Include(story => story.author)
+                .Include(story => story.comments)
+                    .ThenInclude(comment => comment.author);
         }
 
         public IEnumerable<Story> getByCategory(Category ctg)
@@ -32,8 +55,22 @@ namespace StoryWebsite.Services
 
         public Story getById(int id)
         {
-            return _ctx.stories.Find(id);
+            return getAll().FirstOrDefault(a => a.storyID == id);
         }
 
+        public void deleteStory(int storyID)
+        {
+            var story = getAll().FirstOrDefault(a => a.storyID == storyID);
+
+            if (story != null)
+            {
+                foreach (var cm in story.comments)
+                {
+                    _ctx.comments.Remove(cm);
+                }
+                _ctx.stories.Remove(story);
+            }
+            _ctx.SaveChanges();
+        }
     }
 }

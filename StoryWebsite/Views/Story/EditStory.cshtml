@@ -1,0 +1,45 @@
+﻿@model StoryWebsite.Models.Story
+
+@{
+    ViewData["Title"] = "Edit Story";
+}
+
+<h1>Edit Story</h1>
+
+<hr/>
+
+<div>
+    <div>
+        <form asp-controller="story" asp-action="EditStory" method="post">
+            <spacer-10></spacer-10>
+            <input type="hidden" asp-for="storyID" value="@Model.storyID" />
+            <table>
+                <tr>
+                    <td><label asp-for="title"></label></td>
+                    <td><input asp-for="title" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="content"></label></td>
+                    <td><input asp-for="content" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="url"></label></td>
+                    <td><input asp-for="url" /></td>
+                </tr>
+                <tr>
+                    <td><label asp-for="category.categoryName"></label></td>
+                    <td><input asp-for="category.categoryName" /></td>
+                </tr>
+            </table>
+            <spacer-25></spacer-25>
+            <div class="form-group">
+                <input type="submit" value="Edit" class="btn btn-green" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Details" asp-route-id="@Model.storyID">Back to Details</a>
+</div>
+

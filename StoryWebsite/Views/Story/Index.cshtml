@@ -1,0 +1,36 @@
+﻿@model StoryWebsite.ViewModels.StoryIndexViewModel;
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="description-block">
+    <p>
+        This is <strong>LAB#11 </strong> project which demonstrates Authentication and Authorization based on my final project prototype.
+        This project defines an admin role and requires that role to delete stories and comments from database.
+        For non-admin users hide the delete action link in views.
+    </p>
+    <spacer-10></spacer-10>
+    <p>
+        Admin Account: <strong>admin@syr.edu</strong>
+    </p>
+    <p>
+        Password:      <strong>Admin@123</strong>
+    </p>
+</div>
+
+<div class="gallery-ctg">Newest</div>
+@foreach (var story in Model.StoryCollection)
+{
+    <a asp-controller="story" asp-action="details" asp-route-id="@story.storyID">
+        <div class="gallery">
+            <img src="@Href(story.url)" alt="@story.title">
+            <div class="figure-caption">
+                <div class="gallery-title">@story.title</div>
+                <div class="gallery-desc">@story.content</div>
+            </div>
+        </div>
+    </a>
+}
+

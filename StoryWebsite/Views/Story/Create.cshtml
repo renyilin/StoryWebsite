@@ -1,9 +1,7 @@
 ﻿@model StoryWebsite.Models.Story;
 <!-- statement below required to use Razor TagHelpers -->
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 @{
     ViewData["Title"] = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Create Story</h2>
@@ -36,9 +34,16 @@
                 </tr>
             </table>
             <spacer-25></spacer-25>
-            <div class="form-group">
-                <input type="submit" value="create" class="btn btn-default" />
-            </div>
+            <input type="submit" value="create" class="btn btn-green" />
         </form>
+        @*<form method="post" enctype="multipart/form-data" asp-controller="story" asp-action="upload">
+            <div>
+                <p>Upload Image:</p>
+                <input type="file" name="files" accept=".jpg, .jpeg, .png"/>
+            </div>
+            <div>
+                <input type="submit" value="Upload" />
+            </div>
+        </form>*@
     </div>
 </div>

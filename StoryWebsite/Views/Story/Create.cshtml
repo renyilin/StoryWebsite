@@ -1,4 +1,4 @@
-﻿@model StoryWebsite.Models.Story;
+﻿@model StoryWebsite.Models.CreateViewModel;
 <!-- statement below required to use Razor TagHelpers -->
 @{
     ViewData["Title"] = "Create";
@@ -9,29 +9,34 @@
 <hr />
 <div>
     <div>
-        <form asp-controller="story" asp-action="create" method="post">
+        <form asp-controller="story" asp-action="create" enctype="multipart/form-data" method="post">
             <spacer-10></spacer-10>
             <table>
                 <tr>
-                    <td><label asp-for="title"></label></td>
-                    <td><input asp-for="title" /></td>
+                    <td><label asp-for="story.title"></label></td>
+                    <td><input asp-for="story.title" /></td>
                 </tr>
                 <tr>
-                    <td><label asp-for="author.userName"></label></td>
-                    <td><input asp-for="author.userName" /></td>
+                    <td><label asp-for="story.author.userName"></label></td>
+                    <td><input asp-for="story.author.userName" /></td>
                 </tr>
                 <tr>
-                    <td><label asp-for="content"></label></td>
-                    <td><input asp-for="content" /></td>
+                    <td><label asp-for="story.content"></label></td>
+                    <td><input asp-for="story.content" /></td>
                 </tr>
                 <tr>
-                    <td><label asp-for="url"></label></td>
-                    <td><input asp-for="url" /></td>
+                    <td><label asp-for="story.url"></label></td>
+                    <td><input asp-for="story.url" /></td>
                 </tr>
                 <tr>
-                    <td><label asp-for="category.categoryName"></label></td>
-                    <td><input asp-for="category.categoryName" /></td>
+                    <td><label asp-for="coverImage"></label></td>
+                    <td><input type="file" asp-for="coverImage" accept=".jpg, .jpeg, .png" /></td>
                 </tr>
+                <tr>
+                    <td><label asp-for="story.category.categoryName"></label></td>
+                    <td><input asp-for="story.category.categoryName" /></td>
+                </tr>
+
             </table>
             <spacer-25></spacer-25>
             <input type="submit" value="create" class="btn btn-green" />

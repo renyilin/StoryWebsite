@@ -136,11 +136,9 @@ namespace StoryWebsite.Data.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("ProviderKey")
-                        .HasMaxLength(128);
+                    b.Property<string>("ProviderKey");
 
                     b.Property<string>("ProviderDisplayName");
 
@@ -171,11 +169,9 @@ namespace StoryWebsite.Data.Migrations
                 {
                     b.Property<string>("UserId");
 
-                    b.Property<string>("LoginProvider")
-                        .HasMaxLength(128);
+                    b.Property<string>("LoginProvider");
 
-                    b.Property<string>("Name")
-                        .HasMaxLength(128);
+                    b.Property<string>("Name");
 
                     b.Property<string>("Value");
 
@@ -258,6 +254,32 @@ namespace StoryWebsite.Data.Migrations
                     b.HasIndex("categoryID");
 
                     b.ToTable("stories");
+                });
+
+            modelBuilder.Entity("StoryWebsite.Models.StorySlide", b =>
+                {
+                    b.Property<int>("slideID")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("description")
+                        .IsRequired();
+
+                    b.Property<string>("photographer");
+
+                    b.Property<int?>("storyID");
+
+                    b.Property<string>("title")
+                        .IsRequired()
+                        .HasMaxLength(100);
+
+                    b.Property<string>("url");
+
+                    b.HasKey("slideID");
+
+                    b.HasIndex("storyID");
+
+                    b.ToTable("StorySlide");
                 });
 
             modelBuilder.Entity("StoryWebsite.Models.User", b =>
@@ -354,6 +376,13 @@ namespace StoryWebsite.Data.Migrations
                         .WithMany()
                         .HasForeignKey("categoryID")
                         .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("StoryWebsite.Models.StorySlide", b =>
+                {
+                    b.HasOne("StoryWebsite.Models.Story")
+                        .WithMany("slides")
+                        .HasForeignKey("storyID");
                 });
 #pragma warning restore 612, 618
         }

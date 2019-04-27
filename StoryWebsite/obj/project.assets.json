@@ -12947,11 +12947,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "Z:\\Documents\\Course\\CSE686_IP\\Lab\\Lab11\\StoryWebsite_With_Auth\\StoryWebsite\\StoryWebsite\\StoryWebsite.csproj",
+      "projectUniqueName": "Z:\\Documents\\Course\\CSE686_IP\\MyFinalProject\\StoryWebsite_With_Auth\\StoryWebsite\\StoryWebsite\\StoryWebsite.csproj",
       "projectName": "StoryWebsite",
-      "projectPath": "Z:\\Documents\\Course\\CSE686_IP\\Lab\\Lab11\\StoryWebsite_With_Auth\\StoryWebsite\\StoryWebsite\\StoryWebsite.csproj",
+      "projectPath": "Z:\\Documents\\Course\\CSE686_IP\\MyFinalProject\\StoryWebsite_With_Auth\\StoryWebsite\\StoryWebsite\\StoryWebsite.csproj",
       "packagesPath": "C:\\Users\\ryl\\.nuget\\packages\\",
-      "outputPath": "Z:\\Documents\\Course\\CSE686_IP\\Lab\\Lab11\\StoryWebsite_With_Auth\\StoryWebsite\\StoryWebsite\\obj\\",
+      "outputPath": "Z:\\Documents\\Course\\CSE686_IP\\MyFinalProject\\StoryWebsite_With_Auth\\StoryWebsite\\StoryWebsite\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

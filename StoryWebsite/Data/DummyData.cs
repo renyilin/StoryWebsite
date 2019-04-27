@@ -104,7 +104,57 @@ namespace StoryWebsite.Data
                 author = user2
             };
 
-            var testStory = context.stories.FirstOrDefault(a => a.title == "Person Horseback Riding Outdoors");
+            //-------------------------< Story Slides >------------------------------------------
+            StorySlide slide1 = new StorySlide()
+            {
+                title = "Ladybug",
+                description = "A red and black ladybug in morning dew.",
+                url = "https://images.pexels.com/photos/33544/ladybug-beetle-insect-lucky-charm.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            };
+
+            StorySlide slide2 = new StorySlide()
+            {
+                title = "Yellow and Black Ladybug",
+                description = "A yellow and black ladybug in morning dew.",
+                url = "https://images.pexels.com/photos/33057/beetles-harmonia-axyridis-ladybug.jpg?cs=srgb&dl=axyridis-beetle-drops-33057.jpg&fm=jpg"
+            };
+
+            StorySlide slide3 = new StorySlide()
+            {
+                title = "A Bee",
+                description = "Bees are collecting honey. The process by which honeybees collect nectar from plants to make honey demonstrates a fascinating combination of science and nature at work.",
+                url = "https://images.pexels.com/photos/211467/pexels-photo-211467.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            };
+
+
+            //-------------------------< Stories >------------------------------------------
+            var testStory = context.stories.FirstOrDefault(a => a.title == "Beautiful Beetles");
+            if (testStory == null)
+            {
+                var story = new Story()
+                {
+                    title = "Beautiful Beetles",
+                    content = "Today I went riding horse with friends in mcgraw NY. ",
+                    url = "https://images.pexels.com/photos/33544/ladybug-beetle-insect-lucky-charm.jpg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260",
+                    createTime = new DateTime(2019, 1, 5),
+                    updateTime = new DateTime(2019, 2, 6),
+                    author = user1,
+                    status = true,
+                    category = ctg2,
+                    comments = new List<Comment>(){
+                            comment0
+                        },
+                    slides = new List<StorySlide>() {
+                            slide1,
+                            slide2,
+                            slide3
+                    }
+                };
+
+                context.stories.Add(story);
+            }
+
+            testStory = context.stories.FirstOrDefault(a => a.title == "Person Horseback Riding Outdoors");
             if (testStory == null)
             {
                 var story = new Story()

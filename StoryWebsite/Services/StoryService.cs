@@ -49,6 +49,7 @@ namespace StoryWebsite.Services
         {
             return _ctx.stories.Include(story => story.category)
                 .Include(story => story.author)
+                .Include(story => story.slides)
                 .Include(story => story.comments)
                     .ThenInclude(comment => comment.author);
         }

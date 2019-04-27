@@ -1,0 +1,10 @@
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\WebApiLect13\ConsoleClient\bin\Release\netcoreapp2.2\ConsoleClient.deps.json
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\WebApiLect13\ConsoleClient\bin\Release\netcoreapp2.2\ConsoleClient.runtimeconfig.json
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\WebApiLect13\ConsoleClient\bin\Release\netcoreapp2.2\ConsoleClient.runtimeconfig.dev.json
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\WebApiLect13\ConsoleClient\bin\Release\netcoreapp2.2\ConsoleClient.dll
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\WebApiLect13\ConsoleClient\bin\Release\netcoreapp2.2\ConsoleClient.pdb
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\WebApiLect13\ConsoleClient\obj\Release\netcoreapp2.2\ConsoleClient.csproj.CoreCompileInputs.cache
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\WebApiLect13\ConsoleClient\obj\Release\netcoreapp2.2\ConsoleClient.AssemblyInfoInputs.cache
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\WebApiLect13\ConsoleClient\obj\Release\netcoreapp2.2\ConsoleClient.AssemblyInfo.cs
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\WebApiLect13\ConsoleClient\obj\Release\netcoreapp2.2\ConsoleClient.dll
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\WebApiLect13\ConsoleClient\obj\Release\netcoreapp2.2\ConsoleClient.pdb

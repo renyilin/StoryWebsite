@@ -1,0 +1,17 @@
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\FrameworkConsoleClient\bin\Debug\FrameworkConsoleClient.exe.config
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\FrameworkConsoleClient\bin\Debug\FrameworkConsoleClient.exe
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\FrameworkConsoleClient\bin\Debug\FrameworkConsoleClient.pdb
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\FrameworkConsoleClient\obj\Debug\FrameworkConsoleClient.csprojAssemblyReference.cache
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\FrameworkConsoleClient\obj\Debug\FrameworkConsoleClient.csproj.CoreCompileInputs.cache
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\FrameworkConsoleClient\obj\Debug\FrameworkConsoleClient.exe
+C:\su\cse686\code\Asp.Net.Core\Lect13-WebApiClient\FrameworkConsoleClient\obj\Debug\FrameworkConsoleClient.pdb
+Z:\Documents\Course\CSE686_IP\demo\WebApiLect13\FrameworkConsoleClient\bin\Debug\FrameworkConsoleClient.exe.config
+Z:\Documents\Course\CSE686_IP\demo\WebApiLect13\FrameworkConsoleClient\bin\Debug\FrameworkConsoleClient.exe
+Z:\Documents\Course\CSE686_IP\demo\WebApiLect13\FrameworkConsoleClient\bin\Debug\FrameworkConsoleClient.pdb
+Z:\Documents\Course\CSE686_IP\demo\WebApiLect13\FrameworkConsoleClient\bin\Debug\Newtonsoft.Json.dll
+Z:\Documents\Course\CSE686_IP\demo\WebApiLect13\FrameworkConsoleClient\bin\Debug\Newtonsoft.Json.xml
+Z:\Documents\Course\CSE686_IP\demo\WebApiLect13\FrameworkConsoleClient\obj\Debug\FrameworkConsoleClient.csprojAssemblyReference.cache
+Z:\Documents\Course\CSE686_IP\demo\WebApiLect13\FrameworkConsoleClient\obj\Debug\FrameworkConsoleClient.csproj.CoreCompileInputs.cache
+Z:\Documents\Course\CSE686_IP\demo\WebApiLect13\FrameworkConsoleClient\obj\Debug\FrameworkConsoleClient.csproj.CopyComplete
+Z:\Documents\Course\CSE686_IP\demo\WebApiLect13\FrameworkConsoleClient\obj\Debug\FrameworkConsoleClient.exe
+Z:\Documents\Course\CSE686_IP\demo\WebApiLect13\FrameworkConsoleClient\obj\Debug\FrameworkConsoleClient.pdb

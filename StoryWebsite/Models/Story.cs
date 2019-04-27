@@ -29,6 +29,7 @@ namespace StoryWebsite.Models
         [Display(Name = "Create Date")]
         public DateTime createTime{ get; set; }
 
+        [Display(Name = "Update Date")]
         public DateTime updateTime { get; set; }
 
         [Required]
@@ -39,5 +40,7 @@ namespace StoryWebsite.Models
         public User author { get; set; }
 
         public IEnumerable<Comment> comments { get; set; }
+
+        public IEnumerable<StorySlide> slides { get; set; }
     }
 }

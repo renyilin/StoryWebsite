@@ -14,10 +14,12 @@ namespace StoryWebsite.Controllers
     public class StoryController : Controller
     {
         private readonly IStoryServer _storyService;
+        private readonly string _repoPath;
 
         public StoryController(IStoryServer storyService)
         {
             _storyService = storyService;
+            _repoPath = "/fileStorage/images/";
         }
 
         public IActionResult Index()
@@ -35,40 +37,51 @@ namespace StoryWebsite.Controllers
             return View(story);
         }
 
+        public IActionResult Show(int id)
+        {
+            var story = _storyService.getById(id);
+            return View(story);
+        }
+
+
         //----< gets form for creating a course >--------------------
 
         [HttpGet]
         public IActionResult Create(int id)
         {
-            var storys = _storyService.getAll();
-            var model = new Story();
-           //model.stroyID = storys.Count() + 1;
-            return View(model);
+            CreateViewModel createViewModel = new CreateViewModel()
+            {
+                story = new Story(),
+                coverImage = null
+            }; 
+
+            return View(createViewModel);
         }
         //----< posts back new courses details >---------------------
 
         [HttpPost]
-        public IActionResult Create(int id, Story story)
+        public async Task<IActionResult> Create(int id, CreateViewModel createViewModel)
         {
-            var storys = _storyService.getAll();
-            story.createTime = DateTime.Now;
+            IFormFile img = createViewModel.coverImage;
+            string newFileName = DateTime.Now.ToString("yyyyMMddHHmmss_") + img.FileName;
+            string filePath = Directory.GetCurrentDirectory() + "/wwwroot/" + _repoPath
+                                + newFileName;
+            await Upload(img, filePath);
+            createViewModel.story.createTime = DateTime.Now;
 
             //Temporary avatarURL & password
-            story.author.avatarURL = "https://lucidchart.zendesk.com/system/photos/8933/3314/profile_image_678269360_201415.png";
-            story.author.password = "admin12345";
-            story.author.email = "123@sina.com";
+            createViewModel.story.author.avatarURL = "https://lucidchart.zendesk.com/system/photos/8933/3314/profile_image_678269360_201415.png";
+            createViewModel.story.author.password = "admin12345";
+            createViewModel.story.author.email = "123@sina.com";
+            createViewModel.story.url = _repoPath + newFileName;
 
-            _storyService.add(story);
+            _storyService.add(createViewModel.story);
             return RedirectToAction("index");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Upload(List<IFormFile> files)
+        //[HttpPost]
+        public async Task<IActionResult> Upload(IFormFile formFile, string filePath)
         {
-            var formFile = files[0];
-            var filePath = Directory.GetCurrentDirectory() + "/Repository/Images/" 
-                           + formFile.FileName;
-
             if (formFile.Length > 0)
             {
                 using (var stream = new FileStream(filePath, FileMode.Create))

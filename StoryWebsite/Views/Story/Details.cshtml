@@ -1,7 +1,11 @@
 ﻿@model StoryWebsite.Models.Story;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @{
     ViewData["Title"] = "Details";
+    ViewData["count"] = Model.slides.Count();
 }
 
 <img src="@Href(Model.url)" alt="@Model.title" class="img-disp">
@@ -27,7 +31,7 @@
                 @Html.DisplayNameFor(model => model.author)
             </dt>
             <dd>
-                @Html.DisplayFor(model => model.author.userName)
+                @Html.DisplayFor(model => model.author.fullName)
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.content)
@@ -40,6 +44,12 @@
             </dt>
             <dd>
                 @Html.DisplayFor(model => model.category.categoryName)
+            </dd>
+            <dt>
+                Number of Slides
+            </dt>
+            <dd>
+                @ViewBag.count
             </dd>
             <dt>
                 @Html.DisplayNameFor(model => model.createTime)
@@ -60,23 +70,33 @@
         <div class="comment-title">Comments</div>
         <hr />
 
-        <div class="comment_editor">
-            <div class="comments-row">
-                <div class="avatar-column">
-                    <img alt="Avatar" src="@Href("https://secure.gravatar.com/avatar/6371f3ab23417a606e12cbef6fe97394?default=https%3A%2F%2Fassets.zendesk.com%2Fhc%2Fassets%2Fdefault_avatar.png&r=g")">
-                </div>
-                <div class="comment-column">
-                    <form asp-controller="story" asp-action="addcomment" method="post" id="usrform">
-                        <textarea rows="4" cols="50" name="content" form="usrform" placeholder="Type comment here..."></textarea>
-                        <input type="hidden" name="id" value="@Model.storyID" />
-                        <input type="hidden" name="author.userID" value="@Model.author.userID" />
-                        <input type="hidden" name="storyID" value="@Model.storyID" />
-                        <input type="submit" class="comment-btn" value="Comment">
-                    </form>
-                    <br>
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <div class="comment_editor">
+                <div class="comments-row">
+                    <div class="avatar-column">
+                        <img alt="Avatar" src="@Href("https://secure.gravatar.com/avatar/6371f3ab23417a606e12cbef6fe97394?default=https%3A%2F%2Fassets.zendesk.com%2Fhc%2Fassets%2Fdefault_avatar.png&r=g")">
+                    </div>
+                    <div class="comment-column">
+                        <form asp-controller="story" asp-action="addcomment" method="post" id="usrform">
+                            <textarea rows="4" cols="50" name="content" form="usrform" placeholder="Type comment here..."></textarea>
+                            <input type="hidden" name="id" value="@Model.storyID" />
+                            @*<input type="hidden" name="author.userID" value="@Model.author.id" />*@
+                            <input type="hidden" name="storyID" value="@Model.storyID" />
+                            <input type="submit" class="comment-btn" value="Comment">
+                        </form>
+                        <br>
+                    </div>
                 </div>
             </div>
-        </div>
+        }
+        else
+        {
+            <spacer-25></spacer-25>
+            <p style="font-weight:bold;">Please <a asp-area="Identity" asp-page="/Account/Login">log in</a> first to leave a comment below.</p>
+            <spacer-25></spacer-25>
+        }
+
         <hr />
         @foreach (var cm in Model.comments)
         {
@@ -87,14 +107,14 @@
                 <div class="comment-column">
                     <p> @cm.content </p>
                     <div class="comment-meta">
-                        <span class="comment-author"> @cm.author.userName </span>
+                        <span class="comment-author"> @cm.author.fullName </span>
                         <span class="comment-date"> @Html.ValueFor(model => cm.postTime, "{0:dd MMM yyyy}") </span>
                     </div>
                     @if (User.IsInRole("Admin"))
                     {
                         <div class="comment-btns">
-                            <a class="width-150px" asp-controller="story" asp-action="DeleteComment" 
-                                asp-route-storyID="@Model.storyID" asp-route-commentID="@cm.commentID">Delete</a>
+                            <a class="width-150px" asp-controller="story" asp-action="DeleteComment"
+                               asp-route-storyID="@Model.storyID" asp-route-commentID="@cm.commentID">Delete</a>
                         </div>
                     }
                 </div>

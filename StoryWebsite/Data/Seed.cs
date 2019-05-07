@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using StoryWebsite.Models;
 
 namespace AuthFull.Data
 {
@@ -13,8 +14,8 @@ namespace AuthFull.Data
         {
             //adding customs roles
             var RoleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-            var UserManager = serviceProvider.GetRequiredService<UserManager<IdentityUser>>();
-            var SignInManager= serviceProvider.GetRequiredService<SignInManager<IdentityUser>>();
+            var UserManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var SignInManager= serviceProvider.GetRequiredService<SignInManager<ApplicationUser>>();
             string[] roleNames = { "Admin","User"};
             IdentityResult roleResult;
 
@@ -29,10 +30,11 @@ namespace AuthFull.Data
             }
 
             //creating a super user who could maintain the web app
-            var poweruser = new IdentityUser
+            var poweruser = new ApplicationUser
             {
                 UserName = Configuration.GetSection("AppSettings")["UserEmail"],
-                Email = Configuration.GetSection("AppSettings")["UserEmail"]
+                Email = Configuration.GetSection("AppSettings")["UserEmail"],
+                fullName = Configuration.GetSection("AppSettings")["FullName"],
             };
 
             string userPassword = Configuration.GetSection("AppSettings")["UserPassword"];

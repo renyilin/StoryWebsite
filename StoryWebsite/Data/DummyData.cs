@@ -36,27 +36,21 @@ namespace StoryWebsite.Data
 
 
             //----< Users >---------------------------------------------------------------
-            User user0 = new User()
+            ApplicationUser user0 = new ApplicationUser()
             {
-                userName = "Yilin Ren",
-                password = "cxmnbxzmnkh",
-                email = "yren20@syr.edu",
+                fullName = "Yilin Ren",
                 avatarURL = "https://lucidchart.zendesk.com/system/photos/8933/3314/profile_image_678269360_201415.png"
             };
 
-            User user1 = new User()
+            ApplicationUser user1 = new ApplicationUser()
             {
-                userName = "Jean van der Meulen",
-                password = "a12mnsdfsafsa",
-                email = "jvsm@gmail.com",
+                fullName = "Jean van der Meulen",
                 avatarURL = "https://lucidchart.zendesk.com/system/photos/0003/5071/8906/profile_image_252411440_201415.png"
             };
 
-            User user2 = new User()
+            ApplicationUser user2 = new ApplicationUser()
             {
-                userName = "Ben",
-                password = "cafvavasv",
-                email = "ben12@gmail.com",
+                fullName = "Ben",
                 avatarURL = "https://lucidchart.zendesk.com/system/photos/0003/1037/4046/profile_image_4656145546_201415.png"
             };
 

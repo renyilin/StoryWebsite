@@ -35,9 +35,13 @@ namespace StoryWebsite.Models
         [Required]
         public bool status { get; set; } // 0: private; 1: public.
 
+        //[Required]
+        //[Display(Name = "Author")]
+        //public User author { get; set; }
+
         [Required]
         [Display(Name = "Author")]
-        public User author { get; set; }
+        public ApplicationUser author { get; set; }
 
         public IEnumerable<Comment> comments { get; set; }
 

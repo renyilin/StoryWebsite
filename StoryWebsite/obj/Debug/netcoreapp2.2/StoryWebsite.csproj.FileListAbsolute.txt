@@ -212,3 +212,4 @@ Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite
 Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\StoryWebsite.pdb
 Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\StoryWebsite.csproj.CopyComplete
 Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Views\Story\Show.g.cshtml.cs
+Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Views\Story\EditStoryBlock.g.cshtml.cs

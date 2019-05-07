@@ -16,19 +16,22 @@
     <title>@ViewBag.Title</title>
     <link rel="stylesheet" href="@Href("~/CSS/StyleSheet.css")" />
     <link href="https://fonts.googleapis.com/css?family=Margarine|Roboto" rel="stylesheet">
+    @RenderSection("scriptslink", required: false)
 </head>
 <body>
     <div class="main-container">
-        <div class="topnav">
-            <div class="container topnav-flex">
-                <div class="flex-grow-1">
-                    <a asp-controller="story" asp-action="index" class="logo">StoryShare</a>
-                    <a asp-controller="story" asp-action="create" class="nav-btn">Create</a>
-                    <a asp-controller="story" asp-action="about" class="nav-btn">About</a>
+        <header>
+            <div class="topnav">
+                <div class="container topnav-flex">
+                    <div class="flex-grow-1">
+                        <a asp-controller="story" asp-action="index" class="logo">StoryShare</a>
+                        <a asp-controller="story" asp-action="create" class="nav-btn">Create</a>
+                        <a asp-controller="story" asp-action="about" class="nav-btn">About</a>
+                    </div>
+                    <partial name="_LoginPartial" />
                 </div>
-                <partial name="_LoginPartial" />
             </div>
-        </div>
+        </header>
         <div class="main container">
             @RenderBody()
         </div>

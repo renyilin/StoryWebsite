@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using StoryWebsite.Models;
 
 namespace StoryWebsite.Data.Migrations
 {
     [DbContext(typeof(StoryWebsiteDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20190502211752_AddApplicationUser")]
+    partial class AddApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -205,8 +207,7 @@ namespace StoryWebsite.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("authorId")
-                        .IsRequired();
+                    b.Property<int>("authoruserID");
 
                     b.Property<string>("content")
                         .IsRequired()
@@ -220,7 +221,7 @@ namespace StoryWebsite.Data.Migrations
 
                     b.HasKey("commentID");
 
-                    b.HasIndex("authorId");
+                    b.HasIndex("authoruserID");
 
                     b.HasIndex("storyID");
 
@@ -233,8 +234,7 @@ namespace StoryWebsite.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("authorId")
-                        .IsRequired();
+                    b.Property<int>("authoruserID");
 
                     b.Property<int>("categoryID");
 
@@ -255,7 +255,7 @@ namespace StoryWebsite.Data.Migrations
 
                     b.HasKey("storyID");
 
-                    b.HasIndex("authorId");
+                    b.HasIndex("authoruserID");
 
                     b.HasIndex("categoryID");
 
@@ -361,9 +361,9 @@ namespace StoryWebsite.Data.Migrations
 
             modelBuilder.Entity("StoryWebsite.Models.Comment", b =>
                 {
-                    b.HasOne("StoryWebsite.Models.ApplicationUser", "author")
+                    b.HasOne("StoryWebsite.Models.User", "author")
                         .WithMany()
-                        .HasForeignKey("authorId")
+                        .HasForeignKey("authoruserID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("StoryWebsite.Models.Story", "story")
@@ -373,9 +373,9 @@ namespace StoryWebsite.Data.Migrations
 
             modelBuilder.Entity("StoryWebsite.Models.Story", b =>
                 {
-                    b.HasOne("StoryWebsite.Models.ApplicationUser", "author")
+                    b.HasOne("StoryWebsite.Models.User", "author")
                         .WithMany()
-                        .HasForeignKey("authorId")
+                        .HasForeignKey("authoruserID")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("StoryWebsite.Models.Category", "category")

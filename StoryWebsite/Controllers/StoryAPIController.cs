@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using StoryWebsite.Models;
 using StoryWebsite.Services;
 
 namespace StoryWebsite.Controllers
@@ -43,6 +44,49 @@ namespace StoryWebsite.Controllers
             res.Add("Created Time: " + storys.createTime);
             res.Add("Updated Time: " + storys.createTime);
             return res;
+        }
+
+        [HttpPost("postStoryBlock", Name = "postStoryBlock")]
+        public IActionResult postStoryBlock([FromBody] SlideModel slideModel)
+        {
+            var story = _storyService.getById(slideModel.storyId);
+            var storySlides = new List<StorySlide>();
+            for (int i = 0; i < slideModel.slide.Count(); i++) {
+                storySlides.Add(new StorySlide() {
+                    title = slideModel.slide[i].title,
+                    description = slideModel.slide[i].description,
+                    url = slideModel.slide[i].imgURL
+                });
+            }
+            story.slides = storySlides;
+            _storyService.update();
+            return Ok();
+        }
+
+        // GET: api/<controller>
+        [HttpGet("getStorySlides", Name = "getStorySlides")]
+        public ActionResult<IEnumerable<Slide>> GetStorySlides(int storyId)
+        {
+            var story = _storyService.getById(storyId);
+            var storySlides = new List<StorySlide>();
+            if (story != null && story.slides != null) {
+                foreach (var v in story.slides){
+                    storySlides.Add(new StorySlide()
+                    {
+                        title = v.title,
+                        description = v.description,
+                        url = v.url
+                    });
+                }
+            }
+            return Ok(storySlides);
+        }
+
+        public class SlideModel
+        {
+            public List<Slide> slide { get; set; }
+            public int storyId { get; set; }
+            
         }
 
     }

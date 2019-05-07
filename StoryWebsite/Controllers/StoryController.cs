@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using StoryWebsite.Models;
 using StoryWebsite.Services;
@@ -15,16 +16,18 @@ namespace StoryWebsite.Controllers
     {
         private readonly IStoryServer _storyService;
         private readonly string _repoPath;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public StoryController(IStoryServer storyService)
+        public StoryController(IStoryServer storyService, UserManager<ApplicationUser> userManager)
         {
             _storyService = storyService;
-            _repoPath = "/fileStorage/images/";
+            _repoPath = "fileStorage\\images\\";
+            _userManager = userManager;
         }
 
         public IActionResult Index()
         {
-            var storys = _storyService.getAll();
+            var storys = _storyService.getAll().OrderByDescending(s => s.createTime);
             StoryIndexViewModel storyIndexViewModel = new StoryIndexViewModel {
                 StoryCollection = storys,
                 title = "Story Index"
@@ -64,19 +67,17 @@ namespace StoryWebsite.Controllers
         {
             IFormFile img = createViewModel.coverImage;
             string newFileName = DateTime.Now.ToString("yyyyMMddHHmmss_") + img.FileName;
-            string filePath = Directory.GetCurrentDirectory() + "/wwwroot/" + _repoPath
-                                + newFileName;
+            string path = (new FileInfo(AppDomain.CurrentDomain.BaseDirectory)).Directory.Parent.Parent.Parent.FullName;
+            string filePath = path + "\\wwwroot\\" + _repoPath + newFileName;
             await Upload(img, filePath);
             createViewModel.story.createTime = DateTime.Now;
 
             //Temporary avatarURL & password
             createViewModel.story.author.avatarURL = "https://lucidchart.zendesk.com/system/photos/8933/3314/profile_image_678269360_201415.png";
-            createViewModel.story.author.password = "admin12345";
-            createViewModel.story.author.email = "123@sina.com";
             createViewModel.story.url = _repoPath + newFileName;
 
             _storyService.add(createViewModel.story);
-            return RedirectToAction("index");
+            return RedirectToAction("editStoryBlock", new { storyId = createViewModel.story.storyID });
         }
 
         //[HttpPost]
@@ -93,20 +94,14 @@ namespace StoryWebsite.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddComment(int id, Comment cm)
+        public async Task<IActionResult> AddComment(int id, Comment cm)
         {
             var storys = _storyService.getAll();
             var st = storys.FirstOrDefault(a => a.storyID == id);
             cm.story = st;
-            cm.author = st.author;  //demo data  --> will be replaced by current user
+            cm.author = await _userManager.GetUserAsync(User);
             cm.postTime = DateTime.Now;
-
             _storyService.addComment(id, cm);
-
-            //var newComment = new Comment() {
-
-
-            //};
             return RedirectToAction("details", new {id = id});
         }
 
@@ -144,6 +139,11 @@ namespace StoryWebsite.Controllers
             return RedirectToAction("Index");
         }
 
+        public IActionResult EditStoryBlock(int storyID)
+        {
+            var story = _storyService.getById(storyID);
+            return View(story);
+        }
 
         public IActionResult About()
         {

@@ -20,8 +20,11 @@ namespace StoryWebsite.Models
         [Required]
         public bool status { get; set; } //true: allowed to show; false: not allowed;.
 
+        //[Required]
+        //public User author { get; set; }
+
         [Required]
-        public User author { get; set; }
+        public ApplicationUser author { get; set; }
 
         public Story story { get; set; }
     }

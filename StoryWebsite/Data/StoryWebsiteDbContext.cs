@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace StoryWebsite.Models
 {
-    public class StoryWebsiteDbContext: IdentityDbContext
+    public class StoryWebsiteDbContext: IdentityDbContext<ApplicationUser, IdentityRole, string>
     {
         public StoryWebsiteDbContext()
         {

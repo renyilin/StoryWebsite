@@ -3,7 +3,6 @@
 @{
     ViewData["Title"] = "Create";
 }
-
 <h2>Create Story</h2>
 
 <hr />
@@ -17,8 +16,8 @@
                     <td><input asp-for="story.title" /></td>
                 </tr>
                 <tr>
-                    <td><label asp-for="story.author.userName"></label></td>
-                    <td><input asp-for="story.author.userName" /></td>
+                    <td><label asp-for="story.author.fullName"></label></td>
+                    <td><input asp-for="story.author.fullName" /></td>
                 </tr>
                 <tr>
                     <td><label asp-for="story.content"></label></td>
@@ -42,13 +41,13 @@
             <input type="submit" value="create" class="btn btn-green" />
         </form>
         @*<form method="post" enctype="multipart/form-data" asp-controller="story" asp-action="upload">
-            <div>
-                <p>Upload Image:</p>
-                <input type="file" name="files" accept=".jpg, .jpeg, .png"/>
-            </div>
-            <div>
-                <input type="submit" value="Upload" />
-            </div>
-        </form>*@
+                <div>
+                    <p>Upload Image:</p>
+                    <input type="file" name="files" accept=".jpg, .jpeg, .png"/>
+                </div>
+                <div>
+                    <input type="submit" value="Upload" />
+                </div>
+            </form>*@
     </div>
 </div>

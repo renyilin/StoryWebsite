@@ -42,12 +42,9 @@ namespace StoryWebsite
             services.AddDbContext<StoryWebsiteDbContext>(options =>
                        options.UseSqlServer(
                    _configuration.GetConnectionString("DefaultConnection")));
-            //services.AddDefaultIdentity<IdentityUser>()
-            //    .AddDefaultUI(UIFramework.Bootstrap4)
-            //    .AddEntityFrameworkStores<StoryWebsiteDbContext>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>().AddDefaultUI(UIFramework.Bootstrap4)
-     .AddEntityFrameworkStores<StoryWebsiteDbContext>().AddSignInManager<SignInManager<IdentityUser>>().AddDefaultTokenProviders();
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddDefaultUI(UIFramework.Bootstrap4)
+     .AddEntityFrameworkStores<StoryWebsiteDbContext>().AddSignInManager<SignInManager<ApplicationUser>>().AddDefaultTokenProviders();
 
 
             services.AddScoped<IStoryServer, StoryService>();

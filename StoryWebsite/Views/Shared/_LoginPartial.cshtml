@@ -1,13 +1,13 @@
 @using Microsoft.AspNetCore.Identity
-@inject SignInManager<IdentityUser> SignInManager
-@inject UserManager<IdentityUser> UserManager
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
 
 @if (SignInManager.IsSignedIn(User))
 {
 
     <a class="nav-btn" title="Manage">Hello @User.Identity.Name!</a> @*asp-area="Identity" asp-page="/Account/Manage/Index"*@
     <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Story", new { area = "" })">
-        <button href="" type="submit" class="nav-btn">Logout</button>
+        <button type="submit" class="nav-btn">Logout</button>
     </form>
 }
 else

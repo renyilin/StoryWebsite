@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using StoryWebsite.Models;
 using StoryWebsite.Services;
 
@@ -14,9 +16,11 @@ namespace StoryWebsite.Controllers
     public class StoryAPIController : ControllerBase
     {
         private readonly IStoryServer _storyService;
+        private readonly string _repoPath;
         public StoryAPIController(IStoryServer storyService)
         {
             _storyService = storyService;
+            _repoPath = "fileStorage\\images\\";
         }
 
         // GET: api/<controller>
@@ -60,7 +64,7 @@ namespace StoryWebsite.Controllers
             }
             story.slides = storySlides;
             _storyService.update();
-            return Ok();
+            return Ok("Ok");
         }
 
         // GET: api/<controller>
@@ -81,6 +85,22 @@ namespace StoryWebsite.Controllers
             }
             return Ok(storySlides);
         }
+
+        [HttpPost("uploadImg", Name = "uploadImg")]
+        public async Task<string> UploadAsync([FromForm] IFormFile file)
+        {
+            string newFileName = DateTime.Now.ToString("yyyyMMddHHmmss_") + file.FileName;
+            string path = (new FileInfo(AppDomain.CurrentDomain.BaseDirectory)).Directory.Parent.Parent.Parent.FullName;
+            string filePath = path + "\\wwwroot\\" + _repoPath + newFileName;
+            if (file.Length > 0)
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+            }
+            return JsonConvert.SerializeObject(new { newURL = "\\" + _repoPath + newFileName });
+            }
 
         public class SlideModel
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -37,6 +38,12 @@ namespace StoryWebsite.Controllers
 
         public IActionResult Details(int id) {
             var story = _storyService.getById(id);
+            var userId = _userManager.GetUserId(HttpContext.User);
+            ViewData["isAuthor"] = false;
+            if (userId == story.author.Id)
+            {
+                ViewData["isAuthor"] = true;
+            }
             return View(story);
         }
 
@@ -72,9 +79,8 @@ namespace StoryWebsite.Controllers
             await Upload(img, filePath);
             createViewModel.story.createTime = DateTime.Now;
 
-            //Temporary avatarURL & password
-            createViewModel.story.author.avatarURL = "https://lucidchart.zendesk.com/system/photos/8933/3314/profile_image_678269360_201415.png";
-            createViewModel.story.url = _repoPath + newFileName;
+            createViewModel.story.author = await _userManager.GetUserAsync(User);
+            createViewModel.story.url = "\\"+ _repoPath + newFileName;
 
             _storyService.add(createViewModel.story);
             return RedirectToAction("editStoryBlock", new { storyId = createViewModel.story.storyID });
@@ -107,33 +113,57 @@ namespace StoryWebsite.Controllers
 
         public IActionResult DeleteComment(int storyID, int commentID)
         {
-
             _storyService.deleteComment(storyID, commentID);
-
             return RedirectToAction("details", new { id = storyID });
         }
 
         [HttpGet]
         public IActionResult EditStory(int storyID)
         {
+            var userId = _userManager.GetUserId(HttpContext.User);
             var story = _storyService.getById(storyID);
-            return View(story);
+            ViewData["isAuthor"] = false;
+            if (userId == story.author.Id || User.IsInRole("Admin"))
+            {
+                ViewData["isAuthor"] = true;
+
+                CreateViewModel createViewModel = new CreateViewModel()
+                {
+                    story = story,
+                    coverImage = null
+                };
+                return View(createViewModel);
+            }
+            else {
+                return View("index");
+            }
         }
 
         [HttpPost]
-        public IActionResult EditStory(Story story)
+        public async Task<IActionResult> EditStory(CreateViewModel createViewModel)
         {
-            var newStory = _storyService.getById(story.storyID);
-            newStory.title = story.title;
-            newStory.url = story.url;
-            newStory.content = story.content;
-            newStory.category = story.category;
+            var newStory = _storyService.getById(createViewModel.story.storyID);
+            IFormFile img = createViewModel.coverImage;
+            if(img != null)
+            {
+                string newFileName = DateTime.Now.ToString("yyyyMMddHHmmss_") + img.FileName;
+                string path = (new FileInfo(AppDomain.CurrentDomain.BaseDirectory)).Directory.Parent.Parent.Parent.FullName;
+                string filePath = path + "\\wwwroot\\" + _repoPath + newFileName;
+                await Upload(img, filePath);
+                createViewModel.story.url = "\\" + _repoPath + newFileName;
+                newStory.url = createViewModel.story.url;
+            }
+            
+            newStory.title = createViewModel.story.title;
+            newStory.content = createViewModel.story.content;
+            newStory.category = createViewModel.story.category;
             newStory.updateTime = DateTime.Now;
             _storyService.update();
 
-            return RedirectToAction("details", new { id = newStory.storyID });
+            return RedirectToAction("EditStoryBlock", new { storyID = newStory.storyID });
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteStory(int storyID) {
             _storyService.deleteStory(storyID);
             return RedirectToAction("Index");

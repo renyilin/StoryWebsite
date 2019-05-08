@@ -6,6 +6,7 @@
 @{
     Layout = null;
     ViewData["Title"] = "Show";
+    //ViewData["Title"] = Href(slide.url).ToString();
 }
 
 <!DOCTYPE html>
@@ -27,7 +28,9 @@
     <div class="slider">
         @foreach (var slide in Model.slides)
         {
-            <div class="slide" style="background: url(@slide.url) no-repeat center center/cover;">
+            var url = slide.url;
+            url = url.Replace('\\','/');
+            <div class="slide" style="background: url(@url) no-repeat center center/cover;">
                 <div class="content">
                     <h1>@slide.title</h1>
                     <p>@slide.description</p>
@@ -35,10 +38,10 @@
             </div>
         }
     </div>
-    <div class = "buttons">
-            <button id="prev"><i class="fas fa-arrow-left"></i></button>
-            <button id="next"><i class="fas fa-arrow-right"></i></button>
-        </div>
+    <div class="buttons">
+        <button id="prev"><i class="fas fa-arrow-left"></i></button>
+        <button id="next"><i class="fas fa-arrow-right"></i></button>
+    </div>
     <script src="~/js/show.js"></script>
 </body>
 </html>

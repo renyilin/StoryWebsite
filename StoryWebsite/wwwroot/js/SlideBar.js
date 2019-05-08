@@ -34,7 +34,7 @@
           var formData  = new FormData();
           formData.append("file", file);
 
-          fetch('/api/user/uploadImg', { // Your POST endpoint
+          fetch('/api/storyAPI/uploadImg', { // Your POST endpoint
             method: 'POST',
             body: formData // This is your file object
           }).then(
@@ -89,8 +89,8 @@
                         <div className = "SlideRow-Buttons">
                                 <button className = "moveUp" onClick = {() => this.props.moveUpHandler(this.state.sid)}><i className="fas fa-chevron-up"></i></button>
                                 <button className = "moveDown" onClick = {() => this.props.moveDownHandler(this.state.sid)}><i className="fas fa-chevron-down"></i></button>
-                                <button className = "uploadImage" onClick = {() => {var input = document.getElementById("inputfile"); input.click()}}><i className="fas fa-image"></i></button>
-                                <input id = "inputfile" type="file" onChange = {this.onSelectFile}></input>
+                                <button className="uploadImage" onClick={() => { var input = document.getElementById("inputfile" + this.state.sid); input.click()}}><i className="fas fa-image"></i></button>
+                        <input id= {"inputfile"+ this.state.sid} type="file" onChange = {this.onSelectFile}></input>
                         </div>
                     </div>
                 </div>

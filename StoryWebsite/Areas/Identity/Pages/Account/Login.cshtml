@@ -16,7 +16,7 @@
             <label asp-for="Input.Email" class="form-label col-05"></label>
         </dt>
         <dd>
-            <input asp-for="Input.Email" class="form-control col-1" />
+            <input type = "text" asp-for="Input.Email" class="form-control col-1" />
             <span asp-validation-for="Input.Email" class="text-danger"></span>
             <spacer-10></spacer-10>
         </dd>
@@ -31,8 +31,8 @@
         <dt>
 
         </dt>
-        <dd style="float:right;">
-            <button type="submit" class="btn btn-green">Log in</button>
+        <dd style="float:left;">
+            <button type="submit" class="btn btn-green ">    Log in    </button>
         </dd>
     </dl>
 </form>

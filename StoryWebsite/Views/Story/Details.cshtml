@@ -1,5 +1,6 @@
 ﻿@model StoryWebsite.Models.Story;
 @using Microsoft.AspNetCore.Identity
+@using System.Security.Claims;
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
 
@@ -10,11 +11,15 @@
 
 <img src="@Href(Model.url)" alt="@Model.title" class="img-disp">
 <div class="story-btns">
-    <a class="btn btn-green width-100" asp-controller="story" asp-action="EditStory" asp-route-storyID="@Model.storyID">Edit</a>
-    @if (User.IsInRole("Admin"))
-    {
-        <a class="btn btn-red width-100" asp-controller="story" asp-action="DeleteStory" asp-route-storyID="@Model.storyID">Delete</a>
+    <a class="btn btn-blue width-100" asp-controller="story" asp-action="show" asp-route-id="@Model.storyID">Play</a>
+    @{
+        if ((Boolean)ViewData["isAuthor"] || User.IsInRole("Admin"))
+        {
+            <a class="btn btn-green width-100" asp-controller="story" asp-action="EditStory" asp-route-storyID="@Model.storyID">Edit</a>
+            <a class="btn btn-red width-100" asp-controller="story" asp-action="DeleteStory" asp-route-storyID="@Model.storyID">Delete</a>
+        }
     }
+
 </div>
 <div class="detail-info">
     <div class="story-info">

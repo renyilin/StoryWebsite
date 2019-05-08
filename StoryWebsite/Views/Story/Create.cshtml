@@ -1,4 +1,9 @@
 ﻿@model StoryWebsite.Models.CreateViewModel;
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 <!-- statement below required to use Razor TagHelpers -->
 @{
     ViewData["Title"] = "Create";
@@ -7,47 +12,56 @@
 
 <hr />
 <div>
-    <div>
-        <form asp-controller="story" asp-action="create" enctype="multipart/form-data" method="post">
-            <spacer-10></spacer-10>
-            <table>
-                <tr>
-                    <td><label asp-for="story.title"></label></td>
-                    <td><input asp-for="story.title" /></td>
-                </tr>
-                <tr>
-                    <td><label asp-for="story.author.fullName"></label></td>
-                    <td><input asp-for="story.author.fullName" /></td>
-                </tr>
-                <tr>
-                    <td><label asp-for="story.content"></label></td>
-                    <td><input asp-for="story.content" /></td>
-                </tr>
-                <tr>
-                    <td><label asp-for="story.url"></label></td>
-                    <td><input asp-for="story.url" /></td>
-                </tr>
-                <tr>
-                    <td><label asp-for="coverImage"></label></td>
-                    <td><input type="file" asp-for="coverImage" accept=".jpg, .jpeg, .png" /></td>
-                </tr>
-                <tr>
-                    <td><label asp-for="story.category.categoryName"></label></td>
-                    <td><input asp-for="story.category.categoryName" /></td>
-                </tr>
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <div>
+            <form asp-controller="story" asp-action="create" enctype="multipart/form-data" method="post">
+                <spacer-10></spacer-10>
+                <table>
+                    <tr>
+                        <td><label asp-for="story.title"></label></td>
+                        <td><input asp-for="story.title" /></td>
+                    </tr>
+                    @*<tr>
+                        <td><label asp-for="story.author.fullName"></label></td>
+                        <td><input asp-for="story.author.fullName" /></td>
+                    </tr>*@
+                    <tr>
+                        <td><label asp-for="story.content"></label></td>
+                        <td><input asp-for="story.content" /></td>
+                    </tr>
+                    @*<tr>
+                        <td><label asp-for="story.url"></label></td>
+                        <td><input asp-for="story.url" /></td>
+                    </tr>*@
+                    <tr>
+                        <td><label asp-for="coverImage"></label></td>
+                        <td><input type="file" asp-for="coverImage" accept=".jpg, .jpeg, .png" /></td>
+                    </tr>
+                    <tr>
+                        <td><label asp-for="story.category.categoryName"></label></td>
+                        <td><input asp-for="story.category.categoryName" /></td>
+                    </tr>
 
-            </table>
-            <spacer-25></spacer-25>
-            <input type="submit" value="create" class="btn btn-green" />
-        </form>
-        @*<form method="post" enctype="multipart/form-data" asp-controller="story" asp-action="upload">
-                <div>
-                    <p>Upload Image:</p>
-                    <input type="file" name="files" accept=".jpg, .jpeg, .png"/>
-                </div>
-                <div>
-                    <input type="submit" value="Upload" />
-                </div>
-            </form>*@
-    </div>
+                </table>
+                <spacer-25></spacer-25>
+                <input type="submit" value="Create" class="btn btn-green" />
+            </form>
+            @*<form method="post" enctype="multipart/form-data" asp-controller="story" asp-action="upload">
+                    <div>
+                        <p>Upload Image:</p>
+                        <input type="file" name="files" accept=".jpg, .jpeg, .png"/>
+                    </div>
+                    <div>
+                        <input type="submit" value="Upload" />
+                    </div>
+                </form>*@
+        </div>
+    }
+    else
+    {
+        <spacer-25></spacer-25>
+        <p style="font-weight:bold;">Please <a asp-area="Identity" asp-page="/Account/Login">log in</a> first to create a story.</p>
+        <spacer-25></spacer-25>
+    }
 </div>

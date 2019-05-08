@@ -38,7 +38,7 @@ namespace StoryWebsite.Controllers
             return Json(slide);
         }
 
-        [HttpPost("uploadImg", Name = "uploadImg")]
+        [HttpPost("uploadImg", Name = "upload")]
         public async Task<string> UploadAsync([FromForm] IFormFile file)
         {
             var r = Request;

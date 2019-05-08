@@ -3,6 +3,7 @@
         super();  
         //get storyId
         const storyId = document.getElementById("storyId").innerText;
+        
         this.state = {
             "storyId":storyId,
             "users": [],
@@ -45,7 +46,7 @@
 
 addSlideBar = () => {
         let  newSlides = this.state.slides;
-        newSlides.push({id:this.state.slides.length+1, title: '', description: '', imgURL:""});
+    newSlides.push({ id: this.state.slides.length + 1, title: '', description: '', imgURL:"\\fileStorage\\images\\blankimage.png"});
         this.setState({
                     slides: newSlides
                 });
@@ -118,6 +119,8 @@ moveDown = (n) => {
 }
 
 post = () => {
+    const result = document.getElementById("result");
+    result.innerText = "";
     var slideModel = { slide: this.state.slides, storyId: this.state.storyId };
     fetch('/api/storyAPI/postStoryBlock', {
         method: 'POST',
@@ -125,7 +128,9 @@ post = () => {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify(slideModel)
-          })
+    }).then(function () {
+        result.innerText = "Succeed";
+    })
 }
 
 render() { 
@@ -147,7 +152,10 @@ render() {
             <div className = "add-block">
                 <button onClick = {this.addSlideBar} >+ Add Story Block</button>
             </div>
-            <button className = "post-btn" onClick = {this.post}>Post</button>
+            <div className = "slideEditor-submit">
+                <p id = "result"></p>
+                <button className="btn btn-green post-btn" onClick={this.post}>Save</button>
+            </div>
         </div>
         );
     }

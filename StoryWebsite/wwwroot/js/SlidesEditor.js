@@ -1,16 +1,14 @@
 ﻿class SlidesEditor extends React.Component {
     constructor() {  
         super();  
-        //get storyId
         const storyId = document.getElementById("storyId").innerText;
-        
         this.state = {
             "storyId":storyId,
-            "users": [],
             "slides": []
         };
     }
 
+  //---------------< fetch slides data at initial >----------------------
   componentDidMount() {
       fetch('/api/storyAPI/getStorySlides?storyId=' + this.state.storyId)
           .then(res => res.json())
@@ -30,20 +28,9 @@
           }
         );
 
-//    fetch('/api/user/post', {
-//          method: 'POST',
-//          headers: {
-//            'Content-Type': 'application/json',
-//          },
-//          body: JSON.stringify({
-//            Id: 6,
-//            Name: 'bcd',
-//            Summary: 'Engineer'
-//          })
-//     })
-
   }
 
+//---------------< Add one slide bar >-----------------------------
 addSlideBar = () => {
         let  newSlides = this.state.slides;
     newSlides.push({ id: this.state.slides.length + 1, title: '', description: '', imgURL:"\\fileStorage\\images\\blankimage.png"});
@@ -52,6 +39,7 @@ addSlideBar = () => {
                 });
         }
 
+//---------------< remove slide bar >-----------------------------
 removeSlideBar = (n) => {
         let  newSlides = this.state.slides;
         newSlides.splice(n-1, 1);         
@@ -64,6 +52,7 @@ removeSlideBar = (n) => {
         this.render();
         }
 
+//---------------< update title >---------------------------------
 updateTitle = (n, title) => {
         let  newSlides = this.state.slides;
         newSlides[n-1].title = title;
@@ -72,6 +61,7 @@ updateTitle = (n, title) => {
                 });
 }
 
+//---------------< update description >---------------------------------
 updateDescription = (n, description) => {
         let  newSlides = this.state.slides;
         newSlides[n-1].description = description;
@@ -80,6 +70,7 @@ updateDescription = (n, description) => {
                 });
 }
 
+//---------------< update image URL >------------------------------------
 updateImgURL = (n, url) => {
         let  newSlides = this.state.slides;
         newSlides[n-1].imgURL = url;
@@ -88,6 +79,7 @@ updateImgURL = (n, url) => {
                 });
 }
 
+//---------------< move up slide bar >------------------------------------
 moveUp = (n) => {
         let  newSlides = this.state.slides;
         if(n - 1 != 0){
@@ -103,6 +95,7 @@ moveUp = (n) => {
                 });
 }
 
+//---------------< move down slide bar >------------------------------------
 moveDown = (n) => {
         let  newSlides = this.state.slides;
         if(n - 1 != newSlides.length - 1){
@@ -118,6 +111,7 @@ moveDown = (n) => {
                 });
 }
 
+//---------------< post slides data to server >------------------------------------
 post = () => {
     const result = document.getElementById("result");
     result.innerText = "";
@@ -132,6 +126,7 @@ post = () => {
         result.innerText = "Succeed";
     })
 }
+
 
 render() { 
     return (

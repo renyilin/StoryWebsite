@@ -6,35 +6,27 @@
             slide: props.slide,
             title: props.slide.title,
             description: props.slide.description,
-            imgURL: props.slide.imgURL,
-            img: ""
+            imgURL: props.slide.imgURL
         };
     } 
 
     updateTitle = (event) => {
             this.props.updateTitleHandler(this.state.sid, event.target.value);
-            //this.setState({
-            //        title: event.target.value
-            //   });
     }
 
     updateDescription = (event) => {
             this.props.updateDescriptionHandler(this.state.sid, event.target.value);
-            //this.setState({
-            //        description: event.target.value
-            //    });
     }
 
     updateimgURL = (url) => {
             this.props.updateImgURLHandler(this.state.sid, url);
     }
-    //updateImg
 
     upload = (file) => {
           var formData  = new FormData();
           formData.append("file", file);
 
-          fetch('/api/storyAPI/uploadImg', { // Your POST endpoint
+          fetch('/api/storyAPI/uploadImg', { // POST endpoint
             method: 'POST',
             body: formData // This is your file object
           }).then(
@@ -42,7 +34,6 @@
           ).then(
             success => { // Handle the success response object
                 this.updateimgURL(success.newURL);
-                //this.props.updateImgURLHandler(this.state.sid, success.newURL);
             }
           ).catch(
             error => console.log(error) // Handle the error response object
@@ -50,14 +41,8 @@
     }
 
     onSelectFile = () => {
-            //console.log(event.target.files[0]);
             this.upload(event.target.files[0]);
-            //this.setState({
-                //img: event.target.value
-            //    });
     }
-
-
    
     componentWillReceiveProps(nextProps) {
         this.setState({ sid : nextProps.slide.id,

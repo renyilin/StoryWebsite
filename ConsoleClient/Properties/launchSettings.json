@@ -2,7 +2,7 @@
   "profiles": {
     "ConsoleClient": {
       "commandName": "Project",
-      "commandLineArgs": "https://localhost:44300/api/Files /up ../../../CoreConsoleClient.cs"
+      "commandLineArgs": "https://localhost:44300/api/Files /up ../../../CoreConsoleClient123.cs"
     }
   }
 }

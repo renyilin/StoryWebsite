@@ -35,6 +35,15 @@ namespace AuthFull.Data
                 UserName = Configuration.GetSection("AppSettings")["UserEmail"],
                 Email = Configuration.GetSection("AppSettings")["UserEmail"],
                 fullName = Configuration.GetSection("AppSettings")["FullName"],
+                avatarURL = "https://lucidchart.zendesk.com/system/photos/0003/8356/6346/profile_image_5463430483_201415.png"
+            };
+
+            var normaluser = new ApplicationUser
+            {
+                UserName = "yren20@syr.edu",
+                Email = "yren20@syr.edu",
+                fullName = "Yilin Ren",
+                avatarURL = "https://lucidchart.zendesk.com/system/photos/3602/4496/7872/profile_image_380771567512_201415.png"
             };
 
             string userPassword = Configuration.GetSection("AppSettings")["UserPassword"];
@@ -43,13 +52,18 @@ namespace AuthFull.Data
             if(user == null)
             {
                 var createPowerUser = await UserManager.CreateAsync(poweruser, userPassword);
+                var createNormalUser = await UserManager.CreateAsync(normaluser, userPassword);
                 if (createPowerUser.Succeeded)
                 {
                     //here we tie the new user to the "Admin" role 
                     await UserManager.AddToRoleAsync(poweruser, "Admin");
-
+                    
                 }
-            }
+                if (createNormalUser.Succeeded)
+                {
+                    await UserManager.AddToRoleAsync(poweruser, "User");
+                }
+                }
         }
     }
 }

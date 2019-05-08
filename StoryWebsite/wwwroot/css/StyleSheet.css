@@ -121,8 +121,6 @@ spacer-25 {
   height: 25px;
 }
 
-
-
 .logo {
     padding: 7px 10px 9px 20px;
     font-family: 'Margarine', cursive;
@@ -157,8 +155,6 @@ spacer-25 {
     background-color: #4CAF50;
     color: white;
 }
-
-
 
 body {
     /*position: relative;
@@ -272,7 +268,7 @@ input[type=submit]{
 }
 
 .gallery img {
-    width: 242px;
+    width: 240px;
     height: 210px;
     object-fit: cover;
     border-radius: 7.5px 7.5px 0 0;
@@ -902,7 +898,7 @@ input[type=file] {
     left: 0;
     right: 0;
     width: 100%;
-    height: 30%;
+    height: 33.33%;
     margin: auto;
 }
 
@@ -910,7 +906,7 @@ input[type=file] {
     top: 0;
     left: 0;
     width: 100%;
-    height: 30%;
+    height: 33.33%;
     margin: auto;
 }
 
@@ -918,7 +914,7 @@ input[type=file] {
     bottom: 0;
     right: 0;
     width: 100%;
-    height: 30%;
+    height: 33.33%;
     margin: auto;
 }
 

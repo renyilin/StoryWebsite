@@ -50,6 +50,8 @@ namespace StoryWebsite.Controllers
         public IActionResult Show(int id)
         {
             var story = _storyService.getById(id);
+            var sortSlides = story.slides.OrderBy(s => s.order);
+            story.slides = sortSlides;
             return View(story);
         }
 
@@ -73,14 +75,17 @@ namespace StoryWebsite.Controllers
         public async Task<IActionResult> Create(int id, CreateViewModel createViewModel)
         {
             IFormFile img = createViewModel.coverImage;
-            string newFileName = DateTime.Now.ToString("yyyyMMddHHmmss_") + img.FileName;
-            string path = (new FileInfo(AppDomain.CurrentDomain.BaseDirectory)).Directory.Parent.Parent.Parent.FullName;
-            string filePath = path + "\\wwwroot\\" + _repoPath + newFileName;
-            await Upload(img, filePath);
+            createViewModel.story.url = "/fileStorage/images/blankimage.png";
+            if (img != null)
+            {
+                string newFileName = DateTime.Now.ToString("yyyyMMddHHmmss_") + img.FileName;
+                string path = (new FileInfo(AppDomain.CurrentDomain.BaseDirectory)).Directory.Parent.Parent.Parent.FullName;
+                string filePath = path + "\\wwwroot\\" + _repoPath + newFileName;
+                await Upload(img, filePath);
+                createViewModel.story.url = "\\"+ _repoPath + newFileName;
+            }
             createViewModel.story.createTime = DateTime.Now;
-
             createViewModel.story.author = await _userManager.GetUserAsync(User);
-            createViewModel.story.url = "\\"+ _repoPath + newFileName;
 
             _storyService.add(createViewModel.story);
             return RedirectToAction("editStoryBlock", new { storyId = createViewModel.story.storyID });
@@ -111,6 +116,7 @@ namespace StoryWebsite.Controllers
             return RedirectToAction("details", new {id = id});
         }
 
+        [Authorize(Roles = "Admin")]
         public IActionResult DeleteComment(int storyID, int commentID)
         {
             _storyService.deleteComment(storyID, commentID);
@@ -163,9 +169,16 @@ namespace StoryWebsite.Controllers
             return RedirectToAction("EditStoryBlock", new { storyID = newStory.storyID });
         }
 
-        [Authorize(Roles = "Admin")]
+
         public IActionResult DeleteStory(int storyID) {
-            _storyService.deleteStory(storyID);
+            var userId = _userManager.GetUserId(HttpContext.User);
+            var story = _storyService.getById(storyID);
+            ViewData["isAuthor"] = false;
+            if (userId == story.author.Id || User.IsInRole("Admin"))
+            {
+                ViewData["isAuthor"] = true;
+                _storyService.deleteStory(storyID);
+            }
             return RedirectToAction("Index");
         }
 

@@ -59,7 +59,8 @@ namespace StoryWebsite.Controllers
                 storySlides.Add(new StorySlide() {
                     title = slideModel.slide[i].title,
                     description = slideModel.slide[i].description,
-                    url = slideModel.slide[i].imgURL
+                    url = slideModel.slide[i].imgURL,
+                    order = i 
                 });
             }
             story.slides = storySlides;
@@ -69,21 +70,24 @@ namespace StoryWebsite.Controllers
 
         // GET: api/<controller>
         [HttpGet("getStorySlides", Name = "getStorySlides")]
-        public ActionResult<IEnumerable<Slide>> GetStorySlides(int storyId)
+        public ActionResult<IEnumerable<StorySlide>> GetStorySlides(int storyId)
         {
             var story = _storyService.getById(storyId);
             var storySlides = new List<StorySlide>();
+            IEnumerable<StorySlide> sortSlides = null;
             if (story != null && story.slides != null) {
                 foreach (var v in story.slides){
                     storySlides.Add(new StorySlide()
                     {
                         title = v.title,
                         description = v.description,
-                        url = v.url
+                        url = v.url,
+                        order = v.order
                     });
                 }
+                sortSlides = storySlides.OrderBy(s=>s.order);
             }
-            return Ok(storySlides);
+            return Ok(sortSlides);
         }
 
         [HttpPost("uploadImg", Name = "uploadImg")]
@@ -107,6 +111,14 @@ namespace StoryWebsite.Controllers
             public List<Slide> slide { get; set; }
             public int storyId { get; set; }
             
+        }
+
+        public class Slide
+        {
+            public int id { get; set; }
+            public string title { get; set; }
+            public string description { get; set; }
+            public string imgURL { get; set; }
         }
 
     }

@@ -5,7 +5,7 @@ const prev = document.querySelector('#prev');
 const play = document.querySelector('#play');
 const slideNum = document.querySelector(".menubar p");
 let auto = false; // Auto scroll
-const intervalTime = 3000;
+const intervalTime = 4000;
 let slideInterval;
 
 //Initialize slide
@@ -87,9 +87,4 @@ document.addEventListener('keydown', function (event) {
             break;
     }
 });
-
-//// Auto slide
-//if (auto) {
-
-//}
 

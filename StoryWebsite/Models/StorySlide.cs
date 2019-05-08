@@ -21,8 +21,8 @@ namespace StoryWebsite.Models
         [Required]
         [Display(Name = "Description")]
         public string description { get; set; }
-
         public string url { get; set; }
         public string photographer { get; set; }
+        public int order { get; set; }
     }
 }

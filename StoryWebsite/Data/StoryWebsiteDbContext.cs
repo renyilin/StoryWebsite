@@ -27,7 +27,7 @@ namespace StoryWebsite.Models
         public DbSet<Story> stories { get; set; }
         public DbSet<Category> categories { get; set; }
         public DbSet<Comment> comments { get; set; }
-        public DbSet<User> users { get; set; }
+        public DbSet<StorySlide> storySlides { get; set; }
 
     }
 }

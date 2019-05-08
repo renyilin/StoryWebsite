@@ -271,6 +271,8 @@ namespace StoryWebsite.Data.Migrations
                     b.Property<string>("description")
                         .IsRequired();
 
+                    b.Property<int>("order");
+
                     b.Property<string>("photographer");
 
                     b.Property<int?>("storyID");
@@ -285,33 +287,7 @@ namespace StoryWebsite.Data.Migrations
 
                     b.HasIndex("storyID");
 
-                    b.ToTable("StorySlide");
-                });
-
-            modelBuilder.Entity("StoryWebsite.Models.User", b =>
-                {
-                    b.Property<int>("userID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("avatarURL")
-                        .IsRequired();
-
-                    b.Property<string>("email")
-                        .IsRequired()
-                        .HasMaxLength(50);
-
-                    b.Property<string>("password")
-                        .IsRequired()
-                        .HasMaxLength(200);
-
-                    b.Property<string>("userName")
-                        .IsRequired()
-                        .HasMaxLength(30);
-
-                    b.HasKey("userID");
-
-                    b.ToTable("users");
+                    b.ToTable("storySlides");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

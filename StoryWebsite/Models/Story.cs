@@ -26,18 +26,14 @@ namespace StoryWebsite.Models
         public Category category { get; set; }
 
         [Required]
-        [Display(Name = "Create Date")]
+        [Display(Name = "Created Date")]
         public DateTime createTime{ get; set; }
 
-        [Display(Name = "Update Date")]
+        [Display(Name = "Updated Date")]
         public DateTime updateTime { get; set; }
 
         [Required]
         public bool status { get; set; } // 0: private; 1: public.
-
-        //[Required]
-        //[Display(Name = "Author")]
-        //public User author { get; set; }
 
         [Required]
         [Display(Name = "Author")]

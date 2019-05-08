@@ -3,7 +3,6 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-
 <!-- statement below required to use Razor TagHelpers -->
 @{
     ViewData["Title"] = "Create";
@@ -11,51 +10,49 @@
 <h2>Create Story</h2>
 
 <hr />
+@Html.AntiForgeryToken()
 <div>
     @if (SignInManager.IsSignedIn(User))
     {
+        @Html.ValidationSummary(true)
+        <div asp-validation-summary="All" class="text-danger"></div>
         <div>
             <form asp-controller="story" asp-action="create" enctype="multipart/form-data" method="post">
                 <spacer-10></spacer-10>
                 <table>
                     <tr>
                         <td><label asp-for="story.title"></label></td>
-                        <td><input asp-for="story.title" /></td>
+                        <td>
+                            <input asp-for="story.title" />
+                            @Html.ValidationMessageFor(model => model.story.title)
+                            <span asp-validation-for="story.title" class="text-danger"></span>
+                        </td>
                     </tr>
-                    @*<tr>
-                        <td><label asp-for="story.author.fullName"></label></td>
-                        <td><input asp-for="story.author.fullName" /></td>
-                    </tr>*@
                     <tr>
                         <td><label asp-for="story.content"></label></td>
-                        <td><input asp-for="story.content" /></td>
+                        <td>
+                            <input asp-for="story.content" />
+                            @Html.ValidationMessageFor(model => model.story.content)
+                        </td>
                     </tr>
-                    @*<tr>
-                        <td><label asp-for="story.url"></label></td>
-                        <td><input asp-for="story.url" /></td>
-                    </tr>*@
                     <tr>
                         <td><label asp-for="coverImage"></label></td>
-                        <td><input type="file" asp-for="coverImage" accept=".jpg, .jpeg, .png" /></td>
+                        <td>
+                            <input type="file" asp-for="coverImage" accept=".jpg, .jpeg, .png" />
+                            @Html.ValidationMessageFor(model => model.coverImage)
+                        </td>
                     </tr>
                     <tr>
                         <td><label asp-for="story.category.categoryName"></label></td>
-                        <td><input asp-for="story.category.categoryName" /></td>
+                        <td>
+                            <input asp-for="story.category.categoryName" />
+                            @Html.ValidationMessageFor(model => model.story.category.categoryName)
+                        </td>
                     </tr>
-
                 </table>
                 <spacer-25></spacer-25>
                 <input type="submit" value="Create" class="btn btn-green" />
             </form>
-            @*<form method="post" enctype="multipart/form-data" asp-controller="story" asp-action="upload">
-                    <div>
-                        <p>Upload Image:</p>
-                        <input type="file" name="files" accept=".jpg, .jpeg, .png"/>
-                    </div>
-                    <div>
-                        <input type="submit" value="Upload" />
-                    </div>
-                </form>*@
         </div>
     }
     else
@@ -65,3 +62,6 @@
         <spacer-25></spacer-25>
     }
 </div>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

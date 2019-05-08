@@ -190,8 +190,6 @@ Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite
 Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.g.cshtml.cs
 Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewImports.g.cshtml.cs
 Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Areas\Identity\Pages\_ViewStart.g.cshtml.cs
-Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Views\Home\Index.g.cshtml.cs
-Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Views\Home\Privacy.g.cshtml.cs
 Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Views\Shared\Error.g.cshtml.cs
 Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
 Z:\Documents\Course\CSE686_IP\MyFinalProject\StoryWebsite_With_Auth\StoryWebsite\StoryWebsite\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_Layout.g.cshtml.cs
